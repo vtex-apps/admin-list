@@ -1,11 +1,6 @@
 {
-  "section": "orders",
-  "titleId": "admin-example.navigation.label-group",
-  "subSection": "example",
-  "subSectionItems": [
-    {
-      "labelId": "admin-example.navigation.label-main",
-      "path": "/admin/example"
-    }
-  ]
+  "section": "other",
+  "titleId": "admin/interface.name",
+  "icon": "extensions-ic",
+  "path": "/admin/interface"
 }
