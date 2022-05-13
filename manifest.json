@@ -8,7 +8,10 @@
   "scripts": {
     "postreleasy": "vtex publish"
   },
-  "dependencies": {},
+  "dependencies": {
+    "vtex.list-graphql": "1.x",
+    "vtex.gift-card-list": "1.x"
+  },
   "builders": {
     "react": "3.x",
     "admin": "0.x",
