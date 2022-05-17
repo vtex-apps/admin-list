@@ -1,3 +1,20 @@
-query searchListsRaw{
-    searchListsRaw
+query searchListsRaw($page: Int!, $pageSize: Int!){
+    searchListsRaw(page: $page, pageSize: $pageSize){
+        data{
+            id,
+            listType,
+            name,
+            active,
+            public,
+            otherName,
+            ownerName,
+            ownerEmail,
+            image,
+            backgroundImage,
+            quantityPurchased,
+            valuePurchased,
+            eventDate,
+            createdIn
+        }
+    }
 }
