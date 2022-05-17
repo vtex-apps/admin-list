@@ -1,13 +1,15 @@
 import React, { useContext } from 'react'
 
-interface ContextStoreType {
-  valuesLists: any
+interface ContextLists {
+  grid: any 
+  view: any
 }
 
-export const ContextLists = React.createContext<ContextStoreType>({
-  valuesLists: ''
+export const ContextLists = React.createContext<ContextLists>({
+  grid: {},
+  view: {}
 })
 
-export function useStore() {
+export function useLists() {
   return useContext(ContextLists)
 }
