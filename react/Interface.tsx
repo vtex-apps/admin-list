@@ -17,7 +17,7 @@ import {
   useSearchState,
 } from '@vtex/admin-ui'
 import faker from 'faker'
-import { columns, messages } from './utils/definedMessages'
+import { columns, messages, table } from './utils/definedMessages'
 import { CURRENCY, ITEMS_PER_PAGE, LOCALE, NUMBER_OF_ITEMS } from './utils/constants'
 
 const [ThemeProvider] = createSystem({
@@ -123,14 +123,14 @@ function Interface() {
         <div style={{ padding: '0 4rem' }}>
           <DataView state={view}>
             <DataViewControls>
-              <Search id="search" placeholder="Search" state={search} />
+              <Search id="search" placeholder={formatMessage(table.search)} state={search} />
               <FlexSpacer />
               <Pagination
                 state={pagination}
-                preposition="of"
-                subject="results"
-                prevLabel="Previous"
-                nextLabel="Next"
+                preposition={formatMessage(table.paginationPreposition)}
+                subject={formatMessage(table.paginationSubject)}
+                prevLabel={formatMessage(table.paginationPrevious)}
+                nextLabel={formatMessage(table.paginationNext)}
               />
             </DataViewControls>
             <DataGrid state={grid} />

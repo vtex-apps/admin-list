@@ -8,5 +8,10 @@
   "admin/interface.colums.converted": "Convetido",
   "admin/interface.colums.status": "Status",
   "admin/interface.active": "Ativa",
-  "admin/interface.disabled": "Desativada"
+  "admin/interface.disabled": "Desativada",
+  "admin/interface.search": "Buscar",
+  "admin/interface.pagination.preposition": "de",
+  "admin/interface.pagination.subject": "resultados",
+  "admin/interface.pagination.previous": "Anterior",
+  "admin/interface.pagination.next": "Próximo"
 }
