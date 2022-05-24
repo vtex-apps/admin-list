@@ -32,4 +32,21 @@ export const columns = defineMessages({
       id: 'admin/interface.colums.status',
     },
   })
-  
+
+export const table = defineMessages({
+  search: {
+    id: 'admin/interface.search',
+  },
+  paginationPreposition: {
+    id: 'admin/interface.pagination.preposition',
+  },
+  paginationSubject: {
+    id: 'admin/interface.pagination.subject',
+  },
+  paginationPrevious: {
+    id: 'admin/interface.pagination.previous',
+  },
+  paginationNext:{
+    id: 'admin/interface.pagination.next',
+  }
+})
