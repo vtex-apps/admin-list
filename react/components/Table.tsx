@@ -29,7 +29,7 @@ const TableArea: FC = () => {
   if(Object.keys(gridLists).length < 1 && Object.keys(view).length < 1) return <></>
 
   return ( 
-    <div style={{ padding: '0 4rem' }}>
+    <div style={{ padding: '0 2rem' }}>
       <DataView state={view}>
         <DataViewControls>
           <Search id="search" placeholder="Search" state={search} />

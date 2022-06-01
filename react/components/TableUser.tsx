@@ -5,14 +5,16 @@ import {
   DataView,
   DataViewControls,
   FlexSpacer,
+  PageHeader,
+  PageTitle,
   Pagination,
   Search,
   usePaginationState,
   useSearchState,
 } from '@vtex/admin-ui'
 import { ITEMS_PER_PAGE } from '../utils/constants'
-import { table } from '../utils/definedMessages'
-import { useIntl } from 'react-intl'
+import { messages, table } from '../utils/definedMessages'
+import { FormattedMessage, useIntl } from 'react-intl'
 import { useUser } from '../hooks/useUser'
 
 const TableUserArea: FC = () => {
@@ -28,22 +30,29 @@ const TableUserArea: FC = () => {
   if(Object.keys(gridUsers).length < 1 && Object.keys(view).length < 1) return <></>
 
   return ( 
-    <div style={{ padding: '0 4rem' }}>
-      <DataView state={view}>
-        <DataViewControls>
-          <Search id="search" placeholder="Search" state={search} />
-          <FlexSpacer />
-          <Pagination
-            state={pagination}
-            preposition={formatMessage(table.paginationPreposition)}
-            subject={formatMessage(table.paginationSubject)}
-            prevLabel={formatMessage(table.paginationPrevious)}
-            nextLabel={formatMessage(table.paginationNext)}
-          />
-        </DataViewControls>
-        <DataGrid state={gridUsers} />
-      </DataView> 
-    </div>
+    <>
+        <PageHeader>
+            <PageTitle style={{ padding: '0 4rem' }}>
+                <FormattedMessage {...messages.titleUser} />
+            </PageTitle>
+        </PageHeader>
+        <div style={{ padding: '0 4rem' }}>
+        <DataView state={view}>
+            <DataViewControls>
+            <Search id="search" placeholder={formatMessage(table.search)} state={search} />
+            <FlexSpacer />
+            <Pagination
+                state={pagination}
+                preposition={formatMessage(table.paginationPreposition)}
+                subject={formatMessage(table.paginationSubject)}
+                prevLabel={formatMessage(table.paginationPrevious)}
+                nextLabel={formatMessage(table.paginationNext)}
+            />
+            </DataViewControls>
+            <DataGrid state={gridUsers} />
+        </DataView> 
+        </div>
+    </>
   )
 }
 

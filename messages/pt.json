@@ -1,6 +1,6 @@
 {
   "admin/interface.name": "Interface do lojista",
-  "admin/interface.title": "Interface adminstrativa da lista",
+  "admin/interface.title.user": "Todos os proprietários",
   "admin/interface.colums.title": "Título da lista",
   "admin/interface.colums.user": "Usuário",
   "admin/interface.colums.validate": "Validade",
@@ -11,7 +11,7 @@
   "admin/interface.colums.lists": "Listas",
   "admin/interface.active": "Ativa",
   "admin/interface.disabled": "Desativada",
-  "admin/interface.search": "Buscar",
+  "admin/interface.search": "Buscar por e-mail",
   "admin/interface.pagination.preposition": "de",
   "admin/interface.pagination.subject": "resultados",
   "admin/interface.pagination.previous": "Anterior",

@@ -1,8 +1,8 @@
 import { defineMessages } from "react-intl"
 
 export const messages = defineMessages({
-    title: {
-      id: 'admin/interface.title',
+    titleUser: {
+      id: 'admin/interface.title.user',
     },
     active:{
       id: 'admin/interface.active',

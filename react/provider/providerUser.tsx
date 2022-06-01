@@ -38,10 +38,11 @@ const ProviderUser: FC = (props) => {
     columns: [
       {
         id: 'link',
+        width: 30, 
         resolver: {
           type: 'plain',
           render: ({ data }) => 
-            <IconArrowUpRight size="small" onClick={(event) => openTableList(event, data)}/>
+            <IconArrowUpRight onClick={(event) => openTableList(event, data)}/>
           }
         },
       {
