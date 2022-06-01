@@ -5,27 +5,33 @@ import {
   PageTitle,
   
 } from '@vtex/admin-ui'
-import ProviderInterface from './provider/providerInterface'
-import Table from './components/Table'
 import { FormattedMessage } from 'react-intl'
 import { messages } from './utils/definedMessages'
+import ChooseTableArea from './components/ChooseTable'
+import ProviderLists from './provider/providerLists'
+import ProviderUser from './provider/providerUser'
+import ProviderInterface from './provider/providerInterface'
+
 
 const [ThemeProvider] = createSystem({
   key: 'admin-ui-example',
 })
 
 function Interface() {
-
-  return (
+    return (
     <ProviderInterface>
-      <ThemeProvider>
-        <PageHeader>
-          <PageTitle>
-            <FormattedMessage {...messages.title} />
-          </PageTitle>
-        </PageHeader>
-        <Table></Table>
-      </ThemeProvider>
+      <ProviderLists>
+        <ProviderUser>
+          <ThemeProvider>
+            <PageHeader>
+              <PageTitle>
+                <FormattedMessage {...messages.title} />
+              </PageTitle>
+            </PageHeader>
+            <ChooseTableArea />
+          </ThemeProvider>
+        </ProviderUser>
+      </ProviderLists>
     </ProviderInterface>
   )
 }
