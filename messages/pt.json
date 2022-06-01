@@ -7,6 +7,8 @@
   "admin/interface.colums.bought": "Comprado",
   "admin/interface.colums.converted": "Convetido",
   "admin/interface.colums.status": "Status",
+  "admin/interface.colums.owner": "Proprietário",
+  "admin/interface.colums.lists": "Listas",
   "admin/interface.active": "Ativa",
   "admin/interface.disabled": "Desativada",
   "admin/interface.search": "Buscar",
