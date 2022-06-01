@@ -15,7 +15,7 @@ interface ValuesLists{
     createdIn: string
 }
 
-interface Items{
+interface ItemsLists{
     id: string;
     title: string;
     user: string;
