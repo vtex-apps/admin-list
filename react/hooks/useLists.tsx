@@ -1,13 +1,13 @@
 import React, { useContext } from 'react'
 
 interface ContextLists {
-  grid: any 
+  gridLists: any 
   view: any
 }
 
 export const ContextLists = React.createContext<ContextLists>({
-  grid: {},
-  view: {}
+  gridLists: {},
+  view: {},
 })
 
 export function useLists() {
