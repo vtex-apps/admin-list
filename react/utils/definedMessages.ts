@@ -31,6 +31,12 @@ export const columns = defineMessages({
     status: {
       id: 'admin/interface.colums.status',
     },
+    owner: {
+      id: 'admin/interface.colums.owner',
+    },
+    lists: {
+      id: 'admin/interface.colums.lists',
+    },
   })
 
 export const table = defineMessages({
