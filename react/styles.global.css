@@ -1,0 +1,10 @@
+.parent{
+  white-space: nowrap;
+  width: 100%;
+}
+
+.parent > div{
+  display: inline-block;
+  vertical-align: top;
+  white-space: normal;
+}
