@@ -1,16 +1,12 @@
-import React, { FC, useEffect, useState } from 'react'
+import type { FC } from 'react'
+import React, { useState } from 'react'
 
 import { ContextInterface } from '../hooks/useInterface'
 
-const ProviderInterface: FC = (props) => {  
-    const [searchEmailFilter, setSearchEmailFilter] = useState<string>()
-    const [tableLists, setTableLists] = useState(false)
-
-    useEffect(() => {
-    }, [tableLists])
-
-    useEffect(() => {
-    }, [searchEmailFilter])
+const ProviderInterface: FC = (props) => {
+  const [searchEmailFilter, setSearchEmailFilter] = useState<string>()
+  const [tableLists, setTableLists] = useState(false)
+  const [infoUserList, setInfoUserList] = useState<TotalizerListsUsers>()
 
   return (
     <ContextInterface.Provider
@@ -18,8 +14,10 @@ const ProviderInterface: FC = (props) => {
         searchEmailFilter,
         setSearchEmailFilter,
         tableLists,
-        setTableLists
-        }}
+        setTableLists,
+        infoUserList,
+        setInfoUserList,
+      }}
     >
       {props.children}
     </ContextInterface.Provider>

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 
 interface ContextUser {
-  gridUsers: any 
+  gridUsers: any
   view: any
 }
 
