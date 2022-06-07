@@ -20,7 +20,7 @@
   "admin/interface.totalizer.lists.created": "Listas criadas",
   "admin/interface.totalizer.bought": "Comprado",
   "admin/interface.totalizer.converted": "Convertido",
-  "admin/interface.filter.date": "Data do Evento",
+  "admin/interface.filter.date": "Data da criação da lista",
   "admin/interface.filter.date.today": "Hoje",
   "admin/interface.filter.date.yesterday": "Ontem",
   "admin/interface.filter.date.this.week": "Essa semana",
@@ -32,5 +32,7 @@
   "admin/interface.filter.date.customizer": "Personalizado",
   "admin/interface.filter.status": "Status",
   "admin/interface.filter.status.active": "Ativada",
-  "admin/interface.filter.status.disabled": "Expirada"
+  "admin/interface.filter.status.disabled": "Expirada",
+  "admin/interface.modal.date.initial": "Data inicial",
+  "admin/interface.modal.date.final": "Data final"
 }
