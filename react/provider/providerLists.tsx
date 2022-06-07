@@ -3,10 +3,13 @@ import React, { useEffect, useState } from 'react'
 import { useLazyQuery } from 'react-apollo'
 import { useIntl } from 'react-intl'
 import {
+  experimental_useDatePickerState,
+  experimental_useFilterState,
   Tag,
   useDataGridState,
   useDataViewState,
-  useDropdownState,
+  useModalState,
+  useSearchState,
 } from '@vtex/admin-ui'
 
 import searchListsRaw from '../queries/searchListsRaw.gql'
@@ -19,46 +22,151 @@ import {
 } from '../utils/definedMessages'
 import { CURRENCY, ITEMS_PER_PAGE, LOCALE } from '../utils/constants'
 import { useInterface } from '../hooks/useInterface'
+import { dictionaryDate, dictionaryStatus, today } from '../utils/dictionary'
 
 const ProviderLists: FC = (props) => {
+  const useFilterState = experimental_useFilterState
+  const useDatePickerState = experimental_useDatePickerState
   const { formatMessage } = useIntl()
   const [valuesLists, setValuesLists] = useState<ValuesLists[]>()
   const [itemsLists, setItemsLists] = useState<ItemsLists[]>()
+  const [minimunDate, setMinimunDate] = useState(new Date())
   const [searchListRawQuery, { data: dataSearchListsRaw }] =
     useLazyQuery(searchListsRaw)
 
+  const {
+    getInputProps,
+    value: search,
+    debouncedValue,
+  } = useSearchState({
+    timeout: 500,
+  })
+
+  const modalState = useModalState({ visible: false })
+
+  const { searchEmailFilter, infoUserList } = useInterface()
+
+  useEffect(() => {
+    searchListRawQuery({
+      variables: {
+        filter: {
+          name: debouncedValue,
+          ownerEmail: infoUserList?.ownerEmail,
+        },
+        page: 1,
+        pageSize: ITEMS_PER_PAGE,
+      },
+    })
+  }, [debouncedValue])
+
+  const datePersonalizeInitial = useDatePickerState({
+    minValue: {
+      year: 2022,
+      month: 0,
+      day: 1,
+    },
+    maxValue: {
+      year: today.getFullYear(),
+      month: today.getMonth(),
+      day: today.getDate() + 1,
+    },
+  })
+
+  const datePersonalizeFinal = useDatePickerState({
+    minValue: {
+      year: minimunDate.getFullYear(),
+      month: minimunDate.getMonth(),
+      day: minimunDate.getDate(),
+    },
+    maxValue: {
+      year: today.getFullYear(),
+      month: today.getMonth(),
+      day: today.getDate() + 1,
+    },
+  })
+
+  useEffect(() => {
+    setMinimunDate(new Date(datePersonalizeInitial.calendarState.dateValue))
+  }, [datePersonalizeInitial.calendarState.dateValue])
+
   const dateOptions = [
-    { id: 1, label: formatMessage(filterDate.today) },
-    { id: 2, label: formatMessage(filterDate.yesterday) },
-    { id: 3, label: formatMessage(filterDate.thisWeek) },
-    { id: 4, label: formatMessage(filterDate.lastWeek) },
-    { id: 5, label: formatMessage(filterDate.thisMonth) },
-    { id: 6, label: formatMessage(filterDate.lastMonth) },
-    { id: 7, label: formatMessage(filterDate.thisYear) },
-    { id: 8, label: formatMessage(filterDate.lastYear) },
-    { id: 9, label: formatMessage(filterDate.customizer) },
+    { id: '1', label: formatMessage(filterDate.today), value: 1 },
+    { id: '2', label: formatMessage(filterDate.yesterday), value: 2 },
+    { id: '3', label: formatMessage(filterDate.thisWeek), value: 3 },
+    { id: '4', label: formatMessage(filterDate.lastWeek), value: 4 },
+    { id: '5', label: formatMessage(filterDate.thisMonth), value: 5 },
+    { id: '6', label: formatMessage(filterDate.lastMonth), value: 6 },
+    { id: '7', label: formatMessage(filterDate.thisYear), value: 7 },
+    { id: '8', label: formatMessage(filterDate.lastYear), value: 8 },
+    { id: '9', label: formatMessage(filterDate.customizer), value: 9 },
   ]
 
-  const dateState = useDropdownState({
+  const dateState = useFilterState({
     items: dateOptions,
-    itemToString: (item) => (item ? item.label : ''),
-    initialSelectedItem: { id: 0, label: formatMessage(filterDate.date) },
+    onChange: ({ selected }) => changeFilterDate(selected),
+    label: formatMessage(filterDate.date),
   })
 
   const statusOptions = [
-    { id: 1, label: formatMessage(filterStatus.active) },
-    { id: 2, label: formatMessage(filterStatus.disabled) },
+    { id: '1', label: formatMessage(filterStatus.active), value: 1 },
+    { id: '2', label: formatMessage(filterStatus.disabled), value: 2 },
   ]
 
-  const statusState = useDropdownState({
+  const statusState = useFilterState({
     items: statusOptions,
-    itemToString: (item) => (item ? item.label : ''),
-    initialSelectedItem: { id: 0, label: formatMessage(filterStatus.status) },
+    onChange: ({ selected }) => changeFilterStatus(selected),
+    label: formatMessage(filterStatus.status),
   })
 
-  const view = useDataViewState()
+  function changeFilterStatus(selected: string | null) {
+    searchListRawQuery({
+      variables: {
+        page: 1,
+        pageSize: 15,
+        filter: {
+          ownerEmail: searchEmailFilter,
+          eventDateRange: selected ? dictionaryStatus[selected] : null,
+        },
+      },
+    })
+  }
 
-  const { searchEmailFilter } = useInterface()
+  function changeFilterDate(selected: string | null) {
+    if (selected === '9') modalState.setVisible(true)
+    searchListRawQuery({
+      variables: {
+        page: 1,
+        pageSize: 15,
+        filter: {
+          ownerEmail: searchEmailFilter,
+          createdDateRange: selected ? dictionaryDate[selected] : null,
+        },
+      },
+    })
+  }
+
+  function salveDatePersonalizate() {
+    modalState.setVisible(false)
+    searchListRawQuery({
+      variables: {
+        page: 1,
+        pageSize: 15,
+        filter: {
+          ownerEmail: searchEmailFilter,
+          createdDateRange: {
+            startDate: new Date(
+              datePersonalizeInitial.calendarState.dateValue
+            ).toISOString(),
+            endDate: new Date(
+              datePersonalizeFinal.calendarState.dateValue
+            ).toISOString(),
+          },
+        },
+      },
+    })
+  }
+
+  const view = useDataViewState()
 
   const gridLists = useDataGridState({
     view,
@@ -156,10 +264,15 @@ const ProviderLists: FC = (props) => {
       value={{
         gridLists,
         view,
-        dateOptions,
         dateState,
-        statusOptions,
         statusState,
+        search,
+        getInputProps,
+        debouncedValue,
+        modalState,
+        datePersonalizeInitial,
+        datePersonalizeFinal,
+        salveDatePersonalizate,
       }}
     >
       {props.children}

@@ -8,13 +8,12 @@ import {
   Pagination,
   Search,
   usePaginationState,
-  useSearchState,
   PageHeader,
   PageTitle,
   Toolbar,
-  Dropdown,
   ToolbarItem,
   useToolbarState,
+  experimental_Filter,
 } from '@vtex/admin-ui'
 import { useIntl } from 'react-intl'
 
@@ -25,19 +24,14 @@ import { useInterface } from '../hooks/useInterface'
 import TitleArea from './Title'
 import TotalizerArea from './Totalizer'
 import '../styles.global.css'
+import ModalDateArea from './ModalDate'
 
 const TableListArea: FC = () => {
-  const {
-    gridLists,
-    view,
-    dateState,
-    dateOptions,
-    statusOptions,
-    statusState,
-  } = useLists()
+  const { gridLists, view, dateState, statusState, getInputProps } = useLists()
+
+  const Filter = experimental_Filter
 
   const { setTableLists } = useInterface()
-  const search = useSearchState()
   const toolbar = useToolbarState()
 
   const { formatMessage } = useIntl()
@@ -63,31 +57,11 @@ const TableListArea: FC = () => {
             <Search
               id="search"
               placeholder={formatMessage(table.searchList)}
-              state={search}
+              {...getInputProps()}
             />
             <Toolbar state={toolbar} aria-label="Toolbar Render Props">
-              <ToolbarItem>
-                {() => (
-                  <Dropdown
-                    items={dateOptions}
-                    state={dateState}
-                    label="Date"
-                    renderItem={(item) => item?.label}
-                    variant="soft"
-                  />
-                )}
-              </ToolbarItem>
-              <ToolbarItem>
-                {() => (
-                  <Dropdown
-                    items={statusOptions}
-                    state={statusState}
-                    label="Date"
-                    renderItem={(item) => item?.label}
-                    variant="soft"
-                  />
-                )}
-              </ToolbarItem>
+              <ToolbarItem>{() => <Filter state={dateState} />}</ToolbarItem>
+              <ToolbarItem>{() => <Filter state={statusState} />}</ToolbarItem>
             </Toolbar>
             <FlexSpacer />
             <Pagination
@@ -102,6 +76,8 @@ const TableListArea: FC = () => {
           <DataGrid state={gridLists} style={{ marginTop: '24px' }} />
         </DataView>
       </div>
+
+      <ModalDateArea />
     </>
   )
 }

@@ -3,19 +3,29 @@ import React, { useContext } from 'react'
 interface ContextLists {
   gridLists: any
   view: any
-  dateOptions: Array<{ id: number; label: string }>
   dateState: any
-  statusOptions: Array<{ id: number; label: string }>
   statusState: any
+  search: string
+  getInputProps: any
+  debouncedValue: string
+  modalState: any
+  datePersonalizeInitial: any
+  datePersonalizeFinal: any
+  salveDatePersonalizate: () => void
 }
 
 export const ContextLists = React.createContext<ContextLists>({
   gridLists: {},
   view: {},
-  dateOptions: [],
   dateState: {},
-  statusOptions: [],
   statusState: {},
+  search: '',
+  getInputProps: () => {},
+  debouncedValue: '',
+  modalState: {},
+  datePersonalizeInitial: {},
+  datePersonalizeFinal: {},
+  salveDatePersonalizate: () => {},
 })
 
 export function useLists() {
