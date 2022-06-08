@@ -1,9 +1,9 @@
-.parent{
+.infoUser{
   white-space: nowrap;
   width: 100%;
 }
 
-.parent > div{
+.infoUser > div{
   display: inline-block;
   vertical-align: top;
   white-space: normal;

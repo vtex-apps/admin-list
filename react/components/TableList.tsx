@@ -47,7 +47,7 @@ const TableListArea: FC = () => {
   })
 
   if (Object.keys(gridLists).length < 1 && Object.keys(view).length < 1) {
-    return <></>
+    return null
   }
 
   return (
@@ -65,7 +65,7 @@ const TableListArea: FC = () => {
               placeholder={formatMessage(table.searchList)}
               state={search}
             />
-            <Toolbar state={toolbar} aria-label="Toolbar Render Props">
+            <Toolbar state={toolbar}>
               <ToolbarItem>
                 {() => (
                   <Dropdown
@@ -73,7 +73,7 @@ const TableListArea: FC = () => {
                     state={dateState}
                     label="Date"
                     renderItem={(item) => item?.label}
-                    variant="soft"
+                    variant="primary"
                   />
                 )}
               </ToolbarItem>
@@ -84,7 +84,7 @@ const TableListArea: FC = () => {
                     state={statusState}
                     label="Date"
                     renderItem={(item) => item?.label}
-                    variant="soft"
+                    variant="primary"
                   />
                 )}
               </ToolbarItem>

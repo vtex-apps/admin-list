@@ -13,7 +13,7 @@ const TitleArea: FC = () => {
   const { formatMessage } = useIntl()
 
   return (
-    <div className="parent">
+    <div className="infoUser">
       <div>
         <p>
           <b>{infoUserList?.ownerName}</b>
