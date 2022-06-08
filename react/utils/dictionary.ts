@@ -21,7 +21,7 @@ function getMonday(d: Date) {
   const day = d.getDay()
   const diff = d.getDate() - day + (day === 0 ? -6 : 0)
 
-  return new Date(new Date(d.setDate(diff)).setHours(-3, 0, 0, 0))
+  return new Date(new Date(d.setDate(diff)).setHours(0, 0, 0, 0))
 }
 
 const thisWeek = getMonday(new Date())
@@ -33,7 +33,7 @@ export const dictionaryDate: { [key: string]: DictionaryType } = {
   },
   '2': {
     startDate: yesterday.toISOString(),
-    endDate: new Date().toISOString(),
+    endDate: today.toISOString(),
   },
   '3': {
     startDate: thisWeek.toISOString(),
@@ -41,14 +41,14 @@ export const dictionaryDate: { [key: string]: DictionaryType } = {
   },
   '4': {
     startDate: new Date(thisWeek.valueOf() - oneDayAgo * 7).toISOString(),
-    endDate: new Date().toISOString(),
+    endDate: thisWeek.toISOString(),
   },
   '5': {
     startDate: new Date(
       today.getFullYear(),
       today.getMonth(),
       1,
-      -3,
+      0,
       0,
       0,
       0
@@ -60,15 +60,23 @@ export const dictionaryDate: { [key: string]: DictionaryType } = {
       today.getFullYear(),
       today.getMonth() - 1,
       1,
-      -3,
+      0,
       0,
       0,
       0
     ).toISOString(),
-    endDate: new Date().toISOString(),
+    endDate: new Date(
+      today.getFullYear(),
+      today.getMonth(),
+      1,
+      0,
+      0,
+      0,
+      0
+    ).toISOString(),
   },
   '7': {
-    startDate: new Date(today.getFullYear(), 0, 1, -3, 0, 0, 0).toISOString(),
+    startDate: new Date(today.getFullYear(), 0, 1, 0, 0, 0, 0).toISOString(),
     endDate: new Date().toISOString(),
   },
   '8': {
@@ -76,12 +84,20 @@ export const dictionaryDate: { [key: string]: DictionaryType } = {
       today.getFullYear() - 1,
       0,
       1,
-      -3,
+      0,
       0,
       0,
       0
     ).toISOString(),
-    endDate: new Date().toISOString(),
+    endDate: new Date(
+      today.getFullYear() - 1,
+      11,
+      31,
+      0,
+      0,
+      0,
+      0
+    ).toISOString(),
   },
   '9': {
     startDate: '',
