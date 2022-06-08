@@ -1,21 +1,16 @@
 import React from 'react'
-import {
-  createSystem,
-  PageHeader,
-  PageTitle,
-  
-} from '@vtex/admin-ui'
+import { createSystem, PageHeader, PageTitle } from '@vtex/admin-ui'
+import { FormattedMessage } from 'react-intl'
+
 import ProviderInterface from './provider/providerInterface'
 import Table from './components/Table'
-import { FormattedMessage } from 'react-intl'
 import { messages } from './utils/definedMessages'
 
 const [ThemeProvider] = createSystem({
-  key: 'admin-ui-example',
+  key: 'admin-interface-shopkeeper',
 })
 
 function Interface() {
-
   return (
     <ProviderInterface>
       <ThemeProvider>
@@ -24,7 +19,7 @@ function Interface() {
             <FormattedMessage {...messages.title} />
           </PageTitle>
         </PageHeader>
-        <Table></Table>
+        <Table />
       </ThemeProvider>
     </ProviderInterface>
   )
