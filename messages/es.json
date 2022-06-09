@@ -35,5 +35,6 @@
   "admin/interface.filter.status.disabled": "Expirada",
   "admin/interface.modal.date.initial": "Data inicial",
   "admin/interface.modal.date.final": "Data final",
-  "admin/interface.columns.tooltip": "Ver todas as listas desse usuário"
+  "admin/interface.columns.tooltip.user": "Ver todas as listas desse usuário",
+  "admin/interface.columns.tooltip.list": "Ver a página da lista"
 }

@@ -3,9 +3,12 @@ import React, { useEffect, useState } from 'react'
 import { useLazyQuery } from 'react-apollo'
 import { useIntl } from 'react-intl'
 import {
+  Button,
   experimental_useDatePickerState,
   experimental_useFilterState,
+  IconEye,
   Tag,
+  Tooltip,
   useDataGridState,
   useDataViewState,
   useModalState,
@@ -172,6 +175,27 @@ const ProviderLists: FC = (props) => {
     view,
     columns: [
       {
+        id: 'list',
+        width: '2%',
+        resolver: {
+          type: 'plain',
+          render: ({ data }) => (
+            <Tooltip
+              label={formatMessage(columns.tooltipList)}
+              placement="right"
+            >
+              <Button
+                icon={<IconEye />}
+                variant="tertiary"
+                onClick={() =>
+                  window.open(`${window.location.origin}/lists/${data}/guest`)
+                }
+              />
+            </Tooltip>
+          ),
+        },
+      },
+      {
         id: 'title',
         header: formatMessage(columns.title),
         sortable: true,
@@ -247,6 +271,7 @@ const ProviderLists: FC = (props) => {
     const valueItems = valuesLists?.map((item) => {
       return {
         id: item.id ?? '',
+        list: item.id ?? '',
         title: item.name ?? '',
         validate: item?.eventDate
           ? new Date(item.eventDate).valueOf()

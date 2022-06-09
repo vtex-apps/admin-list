@@ -82,7 +82,10 @@ const ProviderUser: FC = (props: Props) => {
         resolver: {
           type: 'plain',
           render: ({ data }) => (
-            <Tooltip label={formatMessage(columns.tooltip)} placement="right">
+            <Tooltip
+              label={formatMessage(columns.tooltipUser)}
+              placement="right"
+            >
               <Button
                 icon={<IconArrowUpRight />}
                 variant="tertiary"

@@ -37,8 +37,11 @@ export const columns = defineMessages({
   lists: {
     id: 'admin/interface.columns.lists',
   },
-  tooltip: {
-    id: 'admin/interface.columns.tooltip',
+  tooltipUser: {
+    id: 'admin/interface.columns.tooltip.user',
+  },
+  tooltipList: {
+    id: 'admin/interface.columns.tooltip.list',
   },
 })
 
