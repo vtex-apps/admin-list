@@ -199,7 +199,7 @@ const ProviderLists: FC = (props) => {
         id: 'title',
         header: formatMessage(columns.title),
         sortable: true,
-        width: '60%',
+        width: '50%',
         resolver: {
           type: 'plain',
           render: ({ data }) => <b>{data}</b>,
