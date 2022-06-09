@@ -1,4 +1,4 @@
-import type { FC } from 'react'
+import type { FC, SyntheticEvent } from 'react'
 import React, { useEffect, useState } from 'react'
 import { useLazyQuery, useQuery } from 'react-apollo'
 import { useIntl } from 'react-intl'
@@ -8,6 +8,8 @@ import {
   useDataViewState,
   IconArrowUpRight,
   useSearchState,
+  Tooltip,
+  Button,
 } from '@vtex/admin-ui'
 
 import searchGiftCards from '../queries/searchGiftCards.gql'
@@ -53,10 +55,7 @@ const ProviderUser: FC = (props: Props) => {
   const { setTableLists, setSearchEmailFilter, setInfoUserList } =
     useInterface()
 
-  function openTableList(
-    event: React.MouseEvent<SVGSVGElement, MouseEvent>,
-    email: any
-  ) {
+  function openTableList(event: SyntheticEvent, email: any) {
     event.preventDefault()
     setTableLists(true)
     setSearchEmailFilter(email)
@@ -83,7 +82,13 @@ const ProviderUser: FC = (props: Props) => {
         resolver: {
           type: 'plain',
           render: ({ data }) => (
-            <IconArrowUpRight onClick={(event) => openTableList(event, data)} />
+            <Tooltip label={formatMessage(columns.tooltip)} placement="right">
+              <Button
+                icon={<IconArrowUpRight />}
+                variant="tertiary"
+                onClick={(event: SyntheticEvent) => openTableList(event, data)}
+              />
+            </Tooltip>
           ),
         },
       },
