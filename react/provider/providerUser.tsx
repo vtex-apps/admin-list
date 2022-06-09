@@ -206,15 +206,15 @@ const ProviderUser: FC = (props: Props) => {
       )
 
       return {
-        table: item?.ownerEmail ? item.ownerEmail : '',
-        id: item?.id ? item.id : '',
+        table: item.ownerEmail ?? '',
+        id: item.id ?? '',
         owner: item?.ownerEmail
           ? { ownerEmail: item.ownerEmail, ownerName: item.ownerName }
           : '',
-        lists: item?.lists ? item.lists : 0,
+        lists: item.lists ?? 0,
         bought: item?.purchase ? item.purchase / 100 : 0,
         converted: valueGift ? valueGift.quantityAlreadyInGiftCard : 0,
-        status: item?.status ? item?.status : false,
+        status: item.status ?? false,
       }
     })
 

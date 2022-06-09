@@ -246,8 +246,8 @@ const ProviderLists: FC = (props) => {
   useEffect(() => {
     const valueItems = valuesLists?.map((item) => {
       return {
-        id: item?.id ? item.id : '',
-        title: item?.name ? item.name : '',
+        id: item.id ?? '',
+        title: item.name ?? '',
         validate: item?.eventDate
           ? new Date(item.eventDate).valueOf()
           : new Date(2000, 1, 1).valueOf(),
