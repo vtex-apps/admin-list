@@ -23,7 +23,6 @@ import { table } from '../utils/definedMessages'
 import { useInterface } from '../hooks/useInterface'
 import TitleArea from './Title'
 import TotalizerArea from './Totalizer'
-import '../styles.global.css'
 import ModalDateArea from './ModalDate'
 
 const TableListArea: FC = () => {
