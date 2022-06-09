@@ -130,4 +130,10 @@ export const modal = defineMessages({
   dateFinal: {
     id: 'admin/interface.modal.date.final',
   },
+  title: {
+    id: 'admin/interface.modal.title',
+  },
+  ariaLabel: {
+    id: 'admin/interface.modal.aria.label',
+  },
 })

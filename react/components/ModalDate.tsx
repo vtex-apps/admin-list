@@ -31,8 +31,12 @@ const ModalDateArea: FC = () => {
   const I18nProvider = experimental_I18nProvider
 
   return (
-    <Modal aria-label="Small" state={modalState} size="small">
-      <ModalHeader title="Small" />
+    <Modal
+      aria-label={formatMessage(modal.ariaLabel)}
+      state={modalState}
+      size="small"
+    >
+      <ModalHeader title={formatMessage(modal.title)} />
       <ModalContent>
         <I18nProvider locale={LOCALE}>
           <div style={{ paddingBottom: '15px' }}>
