@@ -143,8 +143,6 @@ const ProviderUser: FC = (props: Props) => {
               <Tag label={formatMessage(messages.disabled)} palette="red" />
             ),
         },
-        sortable: true,
-        compare: (a, b) => (b.status === a.status ? 0 : a.status ? -1 : 1),
       },
     ],
     items: itemsListsUsers,
