@@ -1,5 +1,5 @@
-query searchListsRaw($page: Int!, $pageSize: Int!){
-    searchListsRaw(page: $page, pageSize: $pageSize){
+query searchListsRaw($page: Int!, $pageSize: Int!, $filter: ListsFiltersInput, $sorting: ListsSortingInput){
+    searchListsRaw(page: $page, pageSize: $pageSize, filters: $filter, sorting: $sorting){
         data{
             id,
             listType,

@@ -1,10 +1,10 @@
 import React from 'react'
-import { createSystem, PageHeader, PageTitle } from '@vtex/admin-ui'
-import { FormattedMessage } from 'react-intl'
+import { createSystem } from '@vtex/admin-ui'
 
+import ChooseTableArea from './components/ChooseTable'
+import ProviderLists from './provider/providerLists'
+import ProviderUser from './provider/providerUser'
 import ProviderInterface from './provider/providerInterface'
-import Table from './components/Table'
-import { messages } from './utils/definedMessages'
 
 const [ThemeProvider] = createSystem({
   key: 'admin-interface-shopkeeper',
@@ -13,14 +13,13 @@ const [ThemeProvider] = createSystem({
 function Interface() {
   return (
     <ProviderInterface>
-      <ThemeProvider>
-        <PageHeader>
-          <PageTitle>
-            <FormattedMessage {...messages.title} />
-          </PageTitle>
-        </PageHeader>
-        <Table />
-      </ThemeProvider>
+      <ProviderLists>
+        <ProviderUser>
+          <ThemeProvider>
+            <ChooseTableArea />
+          </ThemeProvider>
+        </ProviderUser>
+      </ProviderLists>
     </ProviderInterface>
   )
 }

@@ -1,0 +1,3 @@
+interface ValuesUser{
+    email: string
+}

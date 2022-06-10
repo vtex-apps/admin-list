@@ -1,8 +1,8 @@
 import { defineMessages } from "react-intl"
 
 export const messages = defineMessages({
-    title: {
-      id: 'admin/interface.title',
+    titleUser: {
+      id: 'admin/interface.title.user',
     },
     active:{
       id: 'admin/interface.active',
@@ -30,6 +30,12 @@ export const columns = defineMessages({
     },
     status: {
       id: 'admin/interface.colums.status',
+    },
+    owner: {
+      id: 'admin/interface.colums.owner',
+    },
+    lists: {
+      id: 'admin/interface.colums.lists',
     },
   })
 

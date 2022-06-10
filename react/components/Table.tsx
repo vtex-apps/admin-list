@@ -17,7 +17,7 @@ import { table } from '../utils/definedMessages'
 import { useIntl } from 'react-intl'
 
 const TableArea: FC = () => {
-  const { grid, view } = useLists()
+  const { gridLists, view } = useLists()
   const search = useSearchState()
   
   const {formatMessage} = useIntl()
@@ -26,10 +26,10 @@ const TableArea: FC = () => {
     total: 45,
   })
 
-  if(Object.keys(grid).length < 1 && Object.keys(view).length < 1) return <></>
+  if(Object.keys(gridLists).length < 1 && Object.keys(view).length < 1) return <></>
 
   return ( 
-    <div style={{ padding: '0 4rem' }}>
+    <div style={{ padding: '0 2rem' }}>
       <DataView state={view}>
         <DataViewControls>
           <Search id="search" placeholder="Search" state={search} />
@@ -42,7 +42,7 @@ const TableArea: FC = () => {
             nextLabel={formatMessage(table.paginationNext)}
           />
         </DataViewControls>
-        <DataGrid state={grid} />
+        <DataGrid state={gridLists} />
       </DataView> 
     </div>
   )
