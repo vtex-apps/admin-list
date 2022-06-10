@@ -1,3 +1,4 @@
+import type { UsePaginationReturn } from '@vtex/admin-ui'
 import React, { useContext } from 'react'
 
 interface ContextLists {
@@ -12,6 +13,7 @@ interface ContextLists {
   datePersonalizeInitial: any
   datePersonalizeFinal: any
   salveDatePersonalizate: () => void
+  pagination: UsePaginationReturn
 }
 
 export const ContextLists = React.createContext<ContextLists>({
@@ -26,6 +28,7 @@ export const ContextLists = React.createContext<ContextLists>({
   datePersonalizeInitial: {},
   datePersonalizeFinal: {},
   salveDatePersonalizate: () => {},
+  pagination: {} as UsePaginationReturn,
 })
 
 export function useLists() {
