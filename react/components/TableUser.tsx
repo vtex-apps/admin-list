@@ -9,22 +9,16 @@ import {
   PageTitle,
   Pagination,
   Search,
-  usePaginationState,
 } from '@vtex/admin-ui'
 import { FormattedMessage, useIntl } from 'react-intl'
 
-import { ITEMS_PER_PAGE } from '../utils/constants'
 import { messages, table } from '../utils/definedMessages'
 import { useUser } from '../hooks/useUser'
 
 const TableUserArea: FC = () => {
-  const { gridUsers, view, getInputProps } = useUser()
+  const { gridUsers, view, getInputProps, pagination } = useUser()
 
   const { formatMessage } = useIntl()
-  const pagination = usePaginationState({
-    pageSize: ITEMS_PER_PAGE,
-    total: 45,
-  })
 
   if (Object.keys(gridUsers).length < 1 && Object.keys(view).length < 1) {
     return <></>

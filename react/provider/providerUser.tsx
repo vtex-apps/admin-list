@@ -1,6 +1,6 @@
 import type { FC, SyntheticEvent } from 'react'
 import React, { useEffect, useState } from 'react'
-import { useLazyQuery, useQuery } from 'react-apollo'
+import { useLazyQuery } from 'react-apollo'
 import { useIntl } from 'react-intl'
 import {
   Tag,
@@ -10,6 +10,7 @@ import {
   useSearchState,
   Tooltip,
   Button,
+  usePaginationState,
 } from '@vtex/admin-ui'
 
 import searchGiftCards from '../queries/searchGiftCards.gql'
@@ -30,10 +31,19 @@ const ProviderUser: FC = (props: Props) => {
   const [valuesListsUser, setValuesListsUser] = useState<ValuesListsUsers[]>()
   const [itemsListsUsers, setItemsListsUsers] = useState<ItemsListsUsers[]>()
   const [emailFilter, setEmailFilter] = useState<string>()
+  const [totalPagination, setTotalPagination] = useState<number>(0)
   const [emailFilterGiftCard, setEmailFilterGiftCard] = useState<string>()
-  const { data: dataSearchUser } = useQuery(searchUser, {
-    variables: { page: 1, pageSize: 15 },
+  const pagination = usePaginationState({
+    pageSize: ITEMS_PER_PAGE,
+    total: 0,
   })
+
+  useEffect(() => {
+    pagination.paginate({
+      type: 'setTotal',
+      total: totalPagination,
+    })
+  }, [totalPagination])
 
   const {
     getInputProps,
@@ -48,6 +58,8 @@ const ProviderUser: FC = (props: Props) => {
 
   const [searchGiftCardQuery, { data: dataSearchGiftCards }] =
     useLazyQuery(searchGiftCards)
+
+  const [searchUsersQuery, { data: dataSearchUser }] = useLazyQuery(searchUser)
 
   const view = useDataViewState()
   const { formatMessage } = useIntl()
@@ -167,6 +179,13 @@ const ProviderUser: FC = (props: Props) => {
     const valuesSearcUser: ValuesUser[] = dataSearchUser?.allUsers?.data
 
     setValuesUser(valuesSearcUser)
+
+    if (
+      dataSearchUser?.allUsers?.pagination?.total !== undefined &&
+      pagination.total !== dataSearchUser?.allUsers?.pagination?.total
+    ) {
+      setTotalPagination(dataSearchUser?.allUsers?.pagination?.total)
+    }
   }, [dataSearchUser])
 
   useEffect(() => {
@@ -188,16 +207,16 @@ const ProviderUser: FC = (props: Props) => {
     if (emailFilter) {
       searchListUserQuery({
         variables: {
-          page: 1,
-          pageSize: 15,
+          page: pagination.currentPage,
+          pageSize: ITEMS_PER_PAGE,
           filter: { ownerEmail: emailFilter },
         },
       })
 
       searchGiftCardQuery({
         variables: {
-          page: 1,
-          pageSize: 15,
+          page: pagination.currentPage,
+          pageSize: ITEMS_PER_PAGE,
           filter: { email: emailFilterGiftCard },
           sorting: { field: 'email', order: 'ASC' },
         },
@@ -228,14 +247,16 @@ const ProviderUser: FC = (props: Props) => {
   }, [valuesListsUser, valuesGiftCard])
 
   useEffect(() => {
-    searchListUserQuery({
+    const filter = debouncedValue ? { email: debouncedValue } : null
+
+    searchUsersQuery({
       variables: {
-        filter: { ownerEmail: debouncedValue },
-        page: 1,
+        filter,
+        page: pagination.currentPage,
         pageSize: ITEMS_PER_PAGE,
       },
     })
-  }, [debouncedValue, search])
+  }, [debouncedValue, pagination.currentPage])
 
   return (
     <ContextUser.Provider
@@ -245,6 +266,7 @@ const ProviderUser: FC = (props: Props) => {
         search,
         getInputProps,
         debouncedValue,
+        pagination,
       }}
     >
       {props.children}

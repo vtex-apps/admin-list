@@ -1,3 +1,4 @@
+import type { UsePaginationReturn } from '@vtex/admin-ui'
 import React, { useContext } from 'react'
 
 interface ContextUser {
@@ -6,6 +7,7 @@ interface ContextUser {
   search: string
   getInputProps: any
   debouncedValue: string
+  pagination: UsePaginationReturn
 }
 
 export const ContextUser = React.createContext<ContextUser>({
@@ -14,6 +16,7 @@ export const ContextUser = React.createContext<ContextUser>({
   search: '',
   getInputProps: () => {},
   debouncedValue: '',
+  pagination: {} as UsePaginationReturn,
 })
 
 export function useUser() {
