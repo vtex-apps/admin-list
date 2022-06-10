@@ -1,0 +1,11 @@
+query searchGiftCards ($page: Int!, $pageSize: Int!){
+    searchGiftCards(page: $page, pageSize: $pageSize){
+        data{
+            giftCardId,
+            email,
+            profileId,
+            redemptionCode,
+            quantityAlreadyInGiftCard
+        }
+    }
+}   
