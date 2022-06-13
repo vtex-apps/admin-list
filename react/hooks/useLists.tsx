@@ -1,30 +1,54 @@
+import type {
+  DataGridState,
+  DataViewState,
+  GetInputPropsReturn,
+  ModalStateReturn,
+} from '@vtex/admin-ui'
+import type { DatePickerStateReturn } from '@vtex/admin-ui/dist/declarations/src/date-picker'
+import type { UseFilterStateReturn } from '@vtex/admin-ui/dist/declarations/src/filters'
 import React, { useContext } from 'react'
 
 interface ContextLists {
-  gridLists: any
-  view: any
-  dateState: any
-  statusState: any
+  gridLists: DataGridState<ItemsLists>
+  view: DataViewState
+  dateState: UseFilterStateReturn<{
+    id: string
+    label: string
+    value: number
+  }>
+  statusState: UseFilterStateReturn<{
+    id: string
+    label: string
+    value: number
+  }>
   search: string
-  getInputProps: any
+  getInputProps: () => GetInputPropsReturn
   debouncedValue: string
-  modalState: any
-  datePersonalizeInitial: any
-  datePersonalizeFinal: any
+  modalState: ModalStateReturn
+  datePersonalizeInitial: DatePickerStateReturn
+  datePersonalizeFinal: DatePickerStateReturn
   salveDatePersonalizate: () => void
 }
 
 export const ContextLists = React.createContext<ContextLists>({
-  gridLists: {},
-  view: {},
-  dateState: {},
-  statusState: {},
+  gridLists: {} as DataGridState<ItemsLists>,
+  view: {} as DataViewState,
+  dateState: {} as UseFilterStateReturn<{
+    id: string
+    label: string
+    value: number
+  }>,
+  statusState: {} as UseFilterStateReturn<{
+    id: string
+    label: string
+    value: number
+  }>,
   search: '',
-  getInputProps: () => {},
+  getInputProps: () => ({} as GetInputPropsReturn),
   debouncedValue: '',
-  modalState: {},
-  datePersonalizeInitial: {},
-  datePersonalizeFinal: {},
+  modalState: {} as ModalStateReturn,
+  datePersonalizeInitial: {} as DatePickerStateReturn,
+  datePersonalizeFinal: {} as DatePickerStateReturn,
   salveDatePersonalizate: () => {},
 })
 

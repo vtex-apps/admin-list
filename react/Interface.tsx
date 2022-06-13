@@ -1,17 +1,17 @@
 import React from 'react'
 import { createSystem } from '@vtex/admin-ui'
+
 import ChooseTableArea from './components/ChooseTable'
 import ProviderLists from './provider/providerLists'
 import ProviderUser from './provider/providerUser'
 import ProviderInterface from './provider/providerInterface'
 
-
 const [ThemeProvider] = createSystem({
-  key: 'admin-ui-example',
+  key: 'admin-interface-shopkeeper',
 })
 
 function Interface() {
-    return (
+  return (
     <ProviderInterface>
       <ProviderLists>
         <ProviderUser>
