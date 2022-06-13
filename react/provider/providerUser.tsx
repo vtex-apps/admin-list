@@ -30,7 +30,7 @@ const ProviderUser: FC = (props: Props) => {
   const [valuesUser, setValuesUser] = useState<ValuesUser[]>()
   const [valuesListsUser, setValuesListsUser] = useState<ValuesListsUsers[]>()
   const [itemsListsUsers, setItemsListsUsers] = useState<ItemsListsUsers[]>()
-  const [emailFilter, setEmailFilter] = useState<string>()
+  const [emailFilter, setEmailFilter] = useState<string[]>()
   const [totalPagination, setTotalPagination] = useState<number>(0)
   const [emailFilterGiftCard, setEmailFilterGiftCard] = useState<string>()
   const pagination = usePaginationState({
@@ -190,12 +190,14 @@ const ProviderUser: FC = (props: Props) => {
 
   useEffect(() => {
     if (valuesUser !== undefined && valuesUser.length > 0) {
-      let filter = valuesUser[0].email
+      const filter: string[] = []
+
+      filter[0] = valuesUser[0].email
       let filterGift = valuesUser[0].email
 
       for (let index = 1; index < valuesUser.length; index++) {
-        filter += ` OR ownerEmail=${valuesUser[index].email}`
         filterGift += ` OR email=${valuesUser[index].email}`
+        filter[index] = valuesUser[index].email
       }
 
       setEmailFilter(filter)
@@ -207,9 +209,7 @@ const ProviderUser: FC = (props: Props) => {
     if (emailFilter) {
       searchListUserQuery({
         variables: {
-          page: pagination.currentPage,
-          pageSize: ITEMS_PER_PAGE,
-          filter: { ownerEmail: emailFilter },
+          filter: emailFilter,
         },
       })
 

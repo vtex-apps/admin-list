@@ -35,6 +35,8 @@ const ProviderLists: FC = (props) => {
   const [valuesLists, setValuesLists] = useState<ValuesLists[]>()
   const [itemsLists, setItemsLists] = useState<ItemsLists[]>()
   const [totalPagination, setTotalPagination] = useState<number>(0)
+  const [selectedDate, setSelectedDate] = useState<string | null>()
+  const [selectedStatus, setSelectedStatus] = useState<string | null>()
   const [minimunDate, setMinimunDate] = useState(new Date())
   const [searchListRawQuery, { data: dataSearchListsRaw }] =
     useLazyQuery(searchListsRaw)
@@ -60,20 +62,7 @@ const ProviderLists: FC = (props) => {
 
   const modalState = useModalState({ visible: false })
 
-  const { searchEmailFilter, infoUserList } = useInterface()
-
-  useEffect(() => {
-    searchListRawQuery({
-      variables: {
-        filter: {
-          name: debouncedValue,
-          ownerEmail: infoUserList?.ownerEmail,
-        },
-        page: pagination.currentPage,
-        pageSize: ITEMS_PER_PAGE,
-      },
-    })
-  }, [debouncedValue])
+  const { searchEmailFilter, infoUserList, setInfoUserList } = useInterface()
 
   const datePersonalizeInitial = useDatePickerState({
     minValue: {
@@ -119,7 +108,7 @@ const ProviderLists: FC = (props) => {
 
   const dateState = useFilterState({
     items: dateOptions,
-    onChange: ({ selected }) => changeFilterDate(selected),
+    onChange: ({ selected }) => setSelectedDate(selected),
     label: formatMessage(filterDate.date),
   })
 
@@ -130,56 +119,44 @@ const ProviderLists: FC = (props) => {
 
   const statusState = useFilterState({
     items: statusOptions,
-    onChange: ({ selected }) => changeFilterStatus(selected),
+    onChange: ({ selected }) => setSelectedStatus(selected),
     label: formatMessage(filterStatus.status),
   })
 
-  function changeFilterStatus(selected: string | null) {
-    searchListRawQuery({
-      variables: {
-        page: pagination.currentPage,
-        pageSize: ITEMS_PER_PAGE,
-        filter: {
-          ownerEmail: searchEmailFilter,
-          eventDateRange: selected ? dictionaryStatus[selected] : null,
-        },
-      },
-    })
-  }
+  useEffect(() => {
+    const filter = {
+      name: debouncedValue ?? null,
+      ownerEmail: searchEmailFilter ?? null,
+      eventDateRange: selectedStatus ? dictionaryStatus[selectedStatus] : null,
+      createdDateRange: selectedDate ? dictionaryDate[selectedDate] : null,
+    }
 
-  function changeFilterDate(selected: string | null) {
-    if (selected === '9') modalState.setVisible(true)
     searchListRawQuery({
       variables: {
+        filter,
         page: pagination.currentPage,
         pageSize: ITEMS_PER_PAGE,
-        filter: {
-          ownerEmail: searchEmailFilter,
-          createdDateRange: selected ? dictionaryDate[selected] : null,
-        },
       },
     })
-  }
+  }, [
+    debouncedValue,
+    selectedDate,
+    pagination.currentPage,
+    selectedStatus,
+    infoUserList?.ownerEmail,
+    searchEmailFilter,
+  ])
 
   function salveDatePersonalizate() {
+    dictionaryDate[9] = {
+      startDate: new Date(
+        datePersonalizeInitial.calendarState.dateValue
+      ).toISOString(),
+      endDate: new Date(
+        datePersonalizeFinal.calendarState.dateValue
+      ).toISOString(),
+    }
     modalState.setVisible(false)
-    searchListRawQuery({
-      variables: {
-        page: pagination.currentPage,
-        pageSize: ITEMS_PER_PAGE,
-        filter: {
-          ownerEmail: searchEmailFilter,
-          createdDateRange: {
-            startDate: new Date(
-              datePersonalizeInitial.calendarState.dateValue
-            ).toISOString(),
-            endDate: new Date(
-              datePersonalizeFinal.calendarState.dateValue
-            ).toISOString(),
-          },
-        },
-      },
-    })
   }
 
   const view = useDataViewState()
@@ -273,19 +250,11 @@ const ProviderLists: FC = (props) => {
     ) {
       setTotalPagination(dataSearchListsRaw?.searchListsRaw?.pagination?.total)
     }
-  }, [dataSearchListsRaw])
 
-  useEffect(() => {
-    if (searchEmailFilter) {
-      searchListRawQuery({
-        variables: {
-          page: pagination.currentPage,
-          pageSize: ITEMS_PER_PAGE,
-          filter: { ownerEmail: searchEmailFilter },
-        },
-      })
-    }
-  }, [searchEmailFilter, pagination.currentPage])
+    const totalizer = dataSearchListsRaw?.searchListsRaw?.totalizer
+
+    setInfoUserList({ ...infoUserList, ...totalizer })
+  }, [dataSearchListsRaw])
 
   useEffect(() => {
     const valueItems = valuesLists?.map((item) => {
@@ -297,7 +266,7 @@ const ProviderLists: FC = (props) => {
           ? new Date(item.eventDate).valueOf()
           : new Date(2000, 1, 1).valueOf(),
         bought: item?.valuePurchased ? item.valuePurchased / 100 : 0,
-        status: item?.eventDate ? new Date(item.eventDate) > new Date() : false,
+        status: item?.eventDate ? new Date(item.eventDate) >= today : false,
       }
     })
 
