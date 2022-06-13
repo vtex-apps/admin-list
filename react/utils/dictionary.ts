@@ -1,15 +1,15 @@
+export const today = new Date(new Date().setHours(0, 0, 0, 0))
+
 export const dictionaryStatus: { [key: string]: DictionaryType } = {
   '1': {
-    startDate: new Date().toISOString(),
+    startDate: today.toISOString(),
     endDate: '2099-01-01T00:00',
   },
   '2': {
     startDate: '2022-01-01T00:00',
-    endDate: new Date().toISOString(),
+    endDate: today.toISOString(),
   },
 }
-
-export const today = new Date(new Date().setHours(0, 0, 0, 0))
 
 const todayUTC = today.valueOf()
 const oneDayAgo = 86400000
