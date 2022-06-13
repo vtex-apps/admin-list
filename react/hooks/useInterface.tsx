@@ -5,13 +5,17 @@ interface ContextInterface {
   setSearchEmailFilter: (searchEmailFilter: string) => void
   tableLists: boolean
   setTableLists: (tableLists: boolean) => void
+  infoUserList: TotalizerListsUsers | undefined
+  setInfoUserList: (infoUserList: TotalizerListsUsers) => void
 }
 
 export const ContextInterface = React.createContext<ContextInterface>({
-    searchEmailFilter: '',
-    setSearchEmailFilter: () => {},
-    tableLists: false,
-    setTableLists: () => {},
+  searchEmailFilter: '',
+  setSearchEmailFilter: () => {},
+  tableLists: false,
+  setTableLists: () => {},
+  infoUserList: undefined,
+  setInfoUserList: () => {},
 })
 
 export function useInterface() {
