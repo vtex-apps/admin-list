@@ -17,7 +17,7 @@
   "admin/interface.pagination.subject": "resultados",
   "admin/interface.pagination.previous": "Anterior",
   "admin/interface.pagination.next": "Próximo",
-  "admin/interface.totalizer.lists.created": "Listas criadas",
+  "admin/interface.totalizer.lists.created": "Listas",
   "admin/interface.totalizer.bought": "Comprado",
   "admin/interface.totalizer.converted": "Convertido",
   "admin/interface.filter.date": "Data da criação da lista",
