@@ -1,11 +1,21 @@
-query searchGiftCards ($page: Int!, $pageSize: Int!, $filter: GiftCardFiltersInput, $sorting: GiftCardSortingInput){
-    searchGiftCards(page: $page, pageSize: $pageSize, filters: $filter, sorting: $sorting){
-        data{
-            giftCardId,
-            email,
-            profileId,
-            redemptionCode,
-            quantityAlreadyInGiftCard
-        }
+query searchGiftCards(
+  $page: Int!
+  $pageSize: Int!
+  $filter: GiftCardFiltersInput
+  $sorting: GiftCardSortingInput
+) {
+  searchGiftCards(
+    page: $page
+    pageSize: $pageSize
+    filters: $filter
+    sorting: $sorting
+  ) {
+    data {
+      giftCardId
+      email
+      profileId
+      redemptionCode
+      quantityAlreadyInGiftCard
     }
-}   
+  }
+}

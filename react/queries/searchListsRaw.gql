@@ -31,5 +31,9 @@ query searchListsRaw(
       pageSize
       total
     }
+    totalizer {
+      lists
+      purchase
+    }
   }
 }
