@@ -1,4 +1,12 @@
-import { Flex, Text, Set, Card, Divider } from '@vtex/admin-ui'
+import {
+  Flex,
+  Text,
+  Set,
+  Card,
+  Divider,
+  Tooltip,
+  IconWarningCircle,
+} from '@vtex/admin-ui'
 import React from 'react'
 import { useIntl } from 'react-intl'
 
@@ -49,6 +57,12 @@ const TotalizerArea = () => {
           <Set orientation="vertical" spacing={3} fluid csx={{ paddingX: 4 }}>
             <Text variant="pageTitle">
               {intl.formatMessage(totalizer.converted)}
+              <Tooltip
+                label={intl.formatMessage(totalizer.info)}
+                placement="right"
+              >
+                <IconWarningCircle size="small" style={{ marginLeft: '2px' }} />
+              </Tooltip>
             </Text>
             <Text variant="pageTitle" tone="positive">
               <b>

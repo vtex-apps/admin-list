@@ -76,6 +76,9 @@ export const totalizer = defineMessages({
   converted: {
     id: 'admin/interface.totalizer.converted',
   },
+  info: {
+    id: 'admin/interface.totalizer.info',
+  },
 })
 
 export const filterDate = defineMessages({
