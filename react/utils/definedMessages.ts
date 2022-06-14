@@ -116,3 +116,12 @@ export const filterStatus = defineMessages({
     id: 'admin/interface.filter.status.disabled',
   },
 })
+
+export const modal = defineMessages({
+  dateInitial: {
+    id: 'admin/interface.modal.date.initial',
+  },
+  dateFinal: {
+    id: 'admin/interface.modal.date.final',
+  },
+})

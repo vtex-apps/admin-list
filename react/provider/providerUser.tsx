@@ -7,6 +7,7 @@ import {
   useDataGridState,
   useDataViewState,
   IconArrowUpRight,
+  useSearchState,
 } from '@vtex/admin-ui'
 
 import searchGiftCards from '../queries/searchGiftCards.gql'
@@ -30,6 +31,14 @@ const ProviderUser: FC = (props: Props) => {
   const [emailFilterGiftCard, setEmailFilterGiftCard] = useState<string>()
   const { data: dataSearchUser } = useQuery(searchUser, {
     variables: { page: 1, pageSize: 15 },
+  })
+
+  const {
+    getInputProps,
+    value: search,
+    debouncedValue,
+  } = useSearchState({
+    timeout: 500,
   })
 
   const [searchListUserQuery, { data: dataSearchListsUser }] =
@@ -212,11 +221,24 @@ const ProviderUser: FC = (props: Props) => {
     setItemsListsUsers(valueItems)
   }, [valuesListsUser, valuesGiftCard])
 
+  useEffect(() => {
+    searchListUserQuery({
+      variables: {
+        filter: { ownerEmail: debouncedValue },
+        page: 1,
+        pageSize: ITEMS_PER_PAGE,
+      },
+    })
+  }, [debouncedValue, search])
+
   return (
     <ContextUser.Provider
       value={{
         gridUsers,
         view,
+        search,
+        getInputProps,
+        debouncedValue,
       }}
     >
       {props.children}

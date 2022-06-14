@@ -10,7 +10,6 @@ import {
   Pagination,
   Search,
   usePaginationState,
-  useSearchState,
 } from '@vtex/admin-ui'
 import { FormattedMessage, useIntl } from 'react-intl'
 
@@ -19,8 +18,7 @@ import { messages, table } from '../utils/definedMessages'
 import { useUser } from '../hooks/useUser'
 
 const TableUserArea: FC = () => {
-  const { gridUsers, view } = useUser()
-  const search = useSearchState()
+  const { gridUsers, view, getInputProps } = useUser()
 
   const { formatMessage } = useIntl()
   const pagination = usePaginationState({
@@ -44,8 +42,8 @@ const TableUserArea: FC = () => {
           <DataViewControls>
             <Search
               id="search"
-              placeholder={formatMessage(table.searchUser)}
-              state={search}
+              placeholder={formatMessage(table.searchList)}
+              {...getInputProps()}
             />
             <FlexSpacer />
             <Pagination
