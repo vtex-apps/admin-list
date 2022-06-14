@@ -35,7 +35,7 @@ const TableListArea: FC = () => {
   const { formatMessage } = useIntl()
 
   if (Object.keys(gridLists).length < 1 && Object.keys(view).length < 1) {
-    return <></>
+    return null
   }
 
   return (

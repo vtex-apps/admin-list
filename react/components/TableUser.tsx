@@ -21,7 +21,7 @@ const TableUserArea: FC = () => {
   const { formatMessage } = useIntl()
 
   if (Object.keys(gridUsers).length < 1 && Object.keys(view).length < 1) {
-    return <></>
+    return null
   }
 
   return (

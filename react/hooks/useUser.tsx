@@ -1,20 +1,25 @@
-import type { UsePaginationReturn } from '@vtex/admin-ui'
+import type {
+  UsePaginationReturn,
+  DataGridState,
+  DataViewState,
+  GetInputPropsReturn,
+} from '@vtex/admin-ui'
 import React, { useContext } from 'react'
 
 interface ContextUser {
-  gridUsers: any
-  view: any
+  gridUsers: DataGridState<ItemsListsUsers>
+  view: DataViewState
   search: string
-  getInputProps: any
+  getInputProps: () => GetInputPropsReturn
   debouncedValue: string
   pagination: UsePaginationReturn
 }
 
 export const ContextUser = React.createContext<ContextUser>({
-  gridUsers: {},
-  view: {},
+  gridUsers: {} as DataGridState<ItemsListsUsers>,
+  view: {} as DataViewState,
   search: '',
-  getInputProps: () => {},
+  getInputProps: () => ({} as GetInputPropsReturn),
   debouncedValue: '',
   pagination: {} as UsePaginationReturn,
 })
