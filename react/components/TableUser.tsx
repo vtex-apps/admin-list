@@ -34,11 +34,12 @@ const TableUserArea: FC = () => {
       <div style={{ padding: '0 4rem' }}>
         <DataView state={view}>
           <DataViewControls>
-            <Search
-              id="search"
-              placeholder={formatMessage(table.searchList)}
-              {...getInputProps()}
-            />
+            <div>
+              <Search id="search" {...getInputProps()} />
+              <p style={{ fontSize: '0.75rem', marginTop: '2px' }}>
+                {formatMessage(table.searchUser)}
+              </p>
+            </div>
             <FlexSpacer />
             <Pagination
               state={pagination}

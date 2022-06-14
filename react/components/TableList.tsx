@@ -48,15 +48,22 @@ const TableListArea: FC = () => {
       <div style={{ padding: '0 4rem' }}>
         <DataView state={view}>
           <DataViewControls>
-            <Search
-              id="search"
-              placeholder={formatMessage(table.searchList)}
-              {...getInputProps()}
-            />
-            <Toolbar state={toolbar} aria-label="Toolbar Render Props">
+            <div style={{ marginTop: '5px' }}>
+              <Search id="search" {...getInputProps()} />
+              <p style={{ fontSize: '0.75rem', marginTop: '2px' }}>
+                {formatMessage(table.searchList)}
+              </p>
+            </div>
+
+            <Toolbar
+              state={toolbar}
+              aria-label="Toolbar Render Props"
+              style={{ marginTop: '-10px' }}
+            >
               <ToolbarItem>{() => <Filter state={dateState} />}</ToolbarItem>
               <ToolbarItem>{() => <Filter state={statusState} />}</ToolbarItem>
             </Toolbar>
+
             <FlexSpacer />
             <Pagination
               state={pagination}
