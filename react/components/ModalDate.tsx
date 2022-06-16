@@ -7,6 +7,7 @@ import {
   ModalContent,
   ModalFooter,
   ModalHeader,
+  tag,
 } from '@vtex/admin-ui'
 import type { FC } from 'react'
 import React from 'react'
@@ -39,7 +40,11 @@ const ModalDateArea: FC = () => {
       <ModalHeader title={formatMessage(modal.title)} />
       <ModalContent>
         <I18nProvider locale={LOCALE}>
-          <div style={{ paddingBottom: '15px' }}>
+          <tag.div
+            csx={{
+              paddingBottom: '15px',
+            }}
+          >
             <DatePickerField
               label={formatMessage(modal.dateInitial)}
               state={datePersonalizeInitial}
@@ -48,7 +53,7 @@ const ModalDateArea: FC = () => {
               state={datePersonalizeInitial}
               csx={{ zIndex: 100000 }}
             />
-          </div>
+          </tag.div>
           <DatePickerField
             label={formatMessage(modal.dateFinal)}
             state={datePersonalizeFinal}

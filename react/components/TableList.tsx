@@ -13,6 +13,7 @@ import {
   ToolbarItem,
   useToolbarState,
   experimental_Filter,
+  tag,
 } from '@vtex/admin-ui'
 import { useIntl } from 'react-intl'
 
@@ -45,15 +46,23 @@ const TableListArea: FC = () => {
           <TitleArea />
         </PageTitle>
       </PageHeader>
-      <div style={{ padding: '0 4rem' }}>
+      <tag.div
+        csx={{
+          padding: '0 4rem',
+        }}
+      >
         <DataView state={view}>
           <DataViewControls>
-            <div style={{ marginTop: '5px' }}>
+            <tag.div
+              csx={{
+                marginTop: '5px',
+              }}
+            >
               <Search id="search" {...getInputProps()} />
               <p style={{ fontSize: '0.75rem', marginTop: '2px' }}>
                 {formatMessage(table.searchList)}
               </p>
-            </div>
+            </tag.div>
 
             <Toolbar
               state={toolbar}
@@ -76,7 +85,7 @@ const TableListArea: FC = () => {
           <TotalizerArea />
           <DataGrid state={gridLists} style={{ marginTop: '24px' }} />
         </DataView>
-      </div>
+      </tag.div>
 
       <ModalDateArea />
     </>
