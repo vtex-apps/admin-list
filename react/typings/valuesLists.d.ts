@@ -17,6 +17,7 @@ interface ValuesLists {
 
 interface ItemsLists {
   id: string
+  list: string
   title: string
   validate: number
   bought: number

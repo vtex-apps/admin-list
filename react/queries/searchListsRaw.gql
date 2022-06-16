@@ -1,20 +1,35 @@
-query searchListsRaw($page: Int!, $pageSize: Int!, $filter: ListsFiltersInput, $sorting: ListsSortingInput){
-    searchListsRaw(page: $page, pageSize: $pageSize, filters: $filter, sorting: $sorting){
-        data{
-            id,
-            listType,
-            name,
-            active,
-            public,
-            otherName,
-            ownerName,
-            ownerEmail,
-            image,
-            backgroundImage,
-            quantityPurchased,
-            valuePurchased,
-            eventDate,
-            createdIn
-        }
+query searchListsRaw(
+  $page: Int!
+  $pageSize: Int!
+  $filter: ListsFiltersInput
+  $sorting: ListsSortingInput
+) {
+  searchListsRaw(
+    page: $page
+    pageSize: $pageSize
+    filters: $filter
+    sorting: $sorting
+  ) {
+    data {
+      id
+      listType
+      name
+      active
+      public
+      otherName
+      ownerName
+      ownerEmail
+      image
+      backgroundImage
+      quantityPurchased
+      valuePurchased
+      eventDate
+      createdIn
     }
+    pagination {
+      page
+      pageSize
+      total
+    }
+  }
 }

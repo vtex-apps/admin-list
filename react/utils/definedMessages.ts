@@ -14,28 +14,34 @@ export const messages = defineMessages({
 
 export const columns = defineMessages({
   title: {
-    id: 'admin/interface.colums.title',
+    id: 'admin/interface.columns.title',
   },
   user: {
-    id: 'admin/interface.colums.user',
+    id: 'admin/interface.columns.user',
   },
   validate: {
-    id: 'admin/interface.colums.validate',
+    id: 'admin/interface.columns.validate',
   },
   bought: {
-    id: 'admin/interface.colums.bought',
+    id: 'admin/interface.columns.bought',
   },
   converted: {
-    id: 'admin/interface.colums.converted',
+    id: 'admin/interface.columns.converted',
   },
   status: {
-    id: 'admin/interface.colums.status',
+    id: 'admin/interface.columns.status',
   },
   owner: {
-    id: 'admin/interface.colums.owner',
+    id: 'admin/interface.columns.owner',
   },
   lists: {
-    id: 'admin/interface.colums.lists',
+    id: 'admin/interface.columns.lists',
+  },
+  tooltipUser: {
+    id: 'admin/interface.columns.tooltip.user',
+  },
+  tooltipList: {
+    id: 'admin/interface.columns.tooltip.list',
   },
 })
 
@@ -123,5 +129,11 @@ export const modal = defineMessages({
   },
   dateFinal: {
     id: 'admin/interface.modal.date.final',
+  },
+  title: {
+    id: 'admin/interface.modal.title',
+  },
+  ariaLabel: {
+    id: 'admin/interface.modal.aria.label',
   },
 })

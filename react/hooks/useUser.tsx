@@ -1,4 +1,5 @@
 import type {
+  UsePaginationReturn,
   DataGridState,
   DataViewState,
   GetInputPropsReturn,
@@ -11,6 +12,7 @@ interface ContextUser {
   search: string
   getInputProps: () => GetInputPropsReturn
   debouncedValue: string
+  pagination: UsePaginationReturn
 }
 
 export const ContextUser = React.createContext<ContextUser>({
@@ -19,6 +21,7 @@ export const ContextUser = React.createContext<ContextUser>({
   search: '',
   getInputProps: () => ({} as GetInputPropsReturn),
   debouncedValue: '',
+  pagination: {} as UsePaginationReturn,
 })
 
 export function useUser() {

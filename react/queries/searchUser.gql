@@ -1,9 +1,9 @@
-query searchUser($page: Int!, $pageSize: Int!){
-  allUsers(page: $page, pageSize: $pageSize){
-    data{
+query searchUser($page: Int!, $pageSize: Int!, $filter: UsersFiltersInput) {
+  allUsers(page: $page, pageSize: $pageSize, filter: $filter) {
+    data {
       email
     }
-    pagination{
+    pagination {
       page
       pageSize
       total

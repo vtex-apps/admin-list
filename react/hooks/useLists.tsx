@@ -1,4 +1,5 @@
 import type {
+  UsePaginationReturn,
   DataGridState,
   DataViewState,
   GetInputPropsReturn,
@@ -28,6 +29,7 @@ interface ContextLists {
   datePersonalizeInitial: DatePickerStateReturn
   datePersonalizeFinal: DatePickerStateReturn
   salveDatePersonalizate: () => void
+  pagination: UsePaginationReturn
 }
 
 export const ContextLists = React.createContext<ContextLists>({
@@ -50,6 +52,7 @@ export const ContextLists = React.createContext<ContextLists>({
   datePersonalizeInitial: {} as DatePickerStateReturn,
   datePersonalizeFinal: {} as DatePickerStateReturn,
   salveDatePersonalizate: () => {},
+  pagination: {} as UsePaginationReturn,
 })
 
 export function useLists() {

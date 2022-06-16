@@ -1,14 +1,14 @@
 {
   "admin/interface.name": "Interface do lojista",
   "admin/interface.title.user": "Todos os proprietários",
-  "admin/interface.colums.title": "Título",
-  "admin/interface.colums.user": "Usuário",
-  "admin/interface.colums.validate": "Data do Evento",
-  "admin/interface.colums.bought": "Comprado",
-  "admin/interface.colums.converted": "Convetido",
-  "admin/interface.colums.status": "Status",
-  "admin/interface.colums.owner": "Proprietário",
-  "admin/interface.colums.lists": "Listas",
+  "admin/interface.columns.title": "Título",
+  "admin/interface.columns.user": "Usuário",
+  "admin/interface.columns.validate": "Data do Evento",
+  "admin/interface.columns.bought": "Comprado",
+  "admin/interface.columns.converted": "Convetido",
+  "admin/interface.columns.status": "Status",
+  "admin/interface.columns.owner": "Proprietário",
+  "admin/interface.columns.lists": "Listas",
   "admin/interface.active": "Ativa",
   "admin/interface.disabled": "Desativada",
   "admin/interface.search.user": "Buscar por e-mail",
@@ -34,5 +34,9 @@
   "admin/interface.filter.status.active": "Ativada",
   "admin/interface.filter.status.disabled": "Expirada",
   "admin/interface.modal.date.initial": "Data inicial",
-  "admin/interface.modal.date.final": "Data final"
+  "admin/interface.modal.date.final": "Data final",
+  "admin/interface.modal.title": "Personalizar busca por data",
+  "admin/interface.modal.aria.label": "Modal de personalização da data",
+  "admin/interface.columns.tooltip.user": "Ver todas as listas desse usuário",
+  "admin/interface.columns.tooltip.list": "Ver a página da lista"
 }

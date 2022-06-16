@@ -7,7 +7,6 @@ import {
   FlexSpacer,
   Pagination,
   Search,
-  usePaginationState,
   PageHeader,
   PageTitle,
   Toolbar,
@@ -18,16 +17,15 @@ import {
 import { useIntl } from 'react-intl'
 
 import { useLists } from '../hooks/useLists'
-import { ITEMS_PER_PAGE } from '../utils/constants'
 import { table } from '../utils/definedMessages'
 import { useInterface } from '../hooks/useInterface'
 import TitleArea from './Title'
 import TotalizerArea from './Totalizer'
-import '../styles.global.css'
 import ModalDateArea from './ModalDate'
 
 const TableListArea: FC = () => {
-  const { gridLists, view, dateState, statusState, getInputProps } = useLists()
+  const { gridLists, view, dateState, statusState, getInputProps, pagination } =
+    useLists()
 
   const Filter = experimental_Filter
 
@@ -35,10 +33,6 @@ const TableListArea: FC = () => {
   const toolbar = useToolbarState()
 
   const { formatMessage } = useIntl()
-  const pagination = usePaginationState({
-    pageSize: ITEMS_PER_PAGE,
-    total: 45,
-  })
 
   if (Object.keys(gridLists).length < 1 && Object.keys(view).length < 1) {
     return null

@@ -1,10 +1,10 @@
-query searchListUser($page: Int!, $pageSize: Int!, $filter: ListsFiltersInput){
-    searchListUser(page: $page, pageSize: $pageSize, filters: $filter){
-        id
-        ownerEmail
-        ownerName
-        lists
-        purchase
-        status
-    }
+query searchListUser($page: Int!, $pageSize: Int!, $filter: ListsFiltersInput) {
+  searchListUser(page: $page, pageSize: $pageSize, filters: $filter) {
+    id
+    ownerEmail
+    ownerName
+    lists
+    purchase
+    status
+  }
 }
