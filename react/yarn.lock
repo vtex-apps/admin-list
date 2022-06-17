@@ -1459,6 +1459,18 @@ use-debounce@^7.0.0:
   resolved "https://registry.npmjs.org/use-debounce/-/use-debounce-7.0.1.tgz"
   integrity sha512-fOrzIw2wstbAJuv8PC9Vg4XgwyTLEOdq4y/Z3IhVl8DAE4svRcgyEUvrEXu+BMNgMoc3YND6qLT61kkgEKXh7Q==
 
+"vtex.admin-interface@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.admin-interface@0.7.1/public/@types/vtex.admin-interface":
+  version "0.7.1"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.admin-interface@0.7.1/public/@types/vtex.admin-interface#45ab73af31fe85e4c80e6a7a754acda06f1e4e3a"
+
+"vtex.gift-card-list@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.gift-card-list@1.3.2/public/@types/vtex.gift-card-list":
+  version "1.3.2"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.gift-card-list@1.3.2/public/@types/vtex.gift-card-list#665ec97ab0db38630572f3bc48e780a3c631f0c6"
+
+"vtex.list-graphql@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.list-graphql@3.0.0/public/@types/vtex.list-graphql":
+  version "3.0.0"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.list-graphql@3.0.0/public/@types/vtex.list-graphql#30017559fc21cdfdb15e9e1645bd8d434cf48ba2"
+
 "vtex.render-runtime@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.render-runtime@8.132.4/public/@types/vtex.render-runtime":
   version "8.132.4"
   resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.render-runtime@8.132.4/public/@types/vtex.render-runtime#66bb41bd4d342e37c9d85172aad5f7eefebfb6dc"

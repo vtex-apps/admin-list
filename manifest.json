@@ -1,7 +1,7 @@
 {
   "name": "admin-interface",
   "vendor": "vtex",
-  "version": "0.7.1",
+  "version": "0.7.2",
   "title": "Interface for the admin panel",
   "description": "",
   "mustUpdateAt": "2022-08-28",
@@ -9,7 +9,7 @@
     "postreleasy": "vtex publish"
   },
   "dependencies": {
-    "vtex.list-graphql": "1.x",
+    "vtex.list-graphql": "3.x",
     "vtex.gift-card-list": "1.x"
   },
   "builders": {
