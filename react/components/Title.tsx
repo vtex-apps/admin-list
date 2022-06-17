@@ -1,3 +1,4 @@
+import { tag } from '@vtex/admin-ui'
 import type { FC } from 'react'
 import React from 'react'
 
@@ -7,13 +8,13 @@ const TitleArea: FC = () => {
   const { infoUserList } = useInterface()
 
   return (
-    <div>
-      <p>
+    <tag.div>
+      <tag.p>
         <b>{infoUserList?.ownerName}</b>
         <br />
         {infoUserList?.ownerEmail}
-      </p>
-    </div>
+      </tag.p>
+    </tag.div>
   )
 }
 

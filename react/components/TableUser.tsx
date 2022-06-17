@@ -9,6 +9,7 @@ import {
   PageTitle,
   Pagination,
   Search,
+  tag,
 } from '@vtex/admin-ui'
 import { FormattedMessage, useIntl } from 'react-intl'
 
@@ -31,14 +32,19 @@ const TableUserArea: FC = () => {
           <FormattedMessage {...messages.titleUser} />
         </PageTitle>
       </PageHeader>
-      <div style={{ padding: '0 4rem' }}>
+      <tag.div
+        csx={{
+          padding: '0 4rem',
+        }}
+      >
         <DataView state={view}>
           <DataViewControls>
-            <Search
-              id="search"
-              placeholder={formatMessage(table.searchList)}
-              {...getInputProps()}
-            />
+            <tag.div>
+              <Search id="search" {...getInputProps()} />
+              <tag.p style={{ fontSize: '0.75rem', marginTop: '2px' }}>
+                {formatMessage(table.searchUser)}
+              </tag.p>
+            </tag.div>
             <FlexSpacer />
             <Pagination
               state={pagination}
@@ -50,7 +56,7 @@ const TableUserArea: FC = () => {
           </DataViewControls>
           <DataGrid state={gridUsers} />
         </DataView>
-      </div>
+      </tag.div>
     </>
   )
 }

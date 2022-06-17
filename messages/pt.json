@@ -20,6 +20,7 @@
   "admin/interface.totalizer.lists.created": "Listas",
   "admin/interface.totalizer.bought": "Comprado",
   "admin/interface.totalizer.converted": "Convertido",
+  "admin/interface.totalizer.info": "O valor convertido independe dos filtros aplicados",
   "admin/interface.filter.date": "Data da criação da lista",
   "admin/interface.filter.date.today": "Hoje",
   "admin/interface.filter.date.yesterday": "Ontem",
