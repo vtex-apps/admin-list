@@ -124,6 +124,12 @@ const ProviderLists: FC = (props) => {
   })
 
   useEffect(() => {
+    if (selectedDate === '9') {
+      modalState.setVisible(true)
+    }
+  }, [selectedDate])
+
+  useEffect(() => {
     const filter = {
       name: debouncedValue ?? null,
       ownerEmail: searchEmailFilter ?? null,
