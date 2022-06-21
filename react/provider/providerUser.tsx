@@ -17,7 +17,7 @@ import searchGiftCards from '../queries/searchGiftCards.gql'
 import searchUser from '../queries/searchUser.gql'
 import searchListUser from '../queries/searchListUser.gql'
 import { ContextUser } from '../hooks/useUser'
-import { columns, messages, table } from '../utils/definedMessages'
+import { columns, messages } from '../utils/definedMessages'
 import { CURRENCY, ITEMS_PER_PAGE, LOCALE } from '../utils/constants'
 import { useInterface } from '../hooks/useInterface'
 
@@ -54,7 +54,7 @@ const ProviderUser: FC = (props: Props) => {
     timeout: 500,
   })
 
-  const [searchListUserQuery, { data: dataSearchListsUser, loading }] =
+  const [searchListUserQuery, { data: dataSearchListsUser }] =
     useLazyQuery(searchListUser)
 
   const [searchGiftCardQuery, { data: dataSearchGiftCards }] =
@@ -65,27 +65,6 @@ const ProviderUser: FC = (props: Props) => {
   const view = useDataViewState()
 
   const { formatMessage } = useIntl()
-
-  useEffect(() => {
-    if (loading) {
-      view.setStatus({
-        type: 'loading',
-      })
-    }
-
-    if (itemsListsUsers?.length === 0 && !loading) {
-      view.setStatus({
-        type: 'empty',
-        message: formatMessage(table.empty),
-      })
-    }
-
-    if (itemsListsUsers?.length !== 0 && !loading) {
-      view.setStatus({
-        type: 'ready',
-      })
-    }
-  }, [loading])
 
   const { setTableLists, setSearchEmailFilter, setInfoUserList, tableLists } =
     useInterface()

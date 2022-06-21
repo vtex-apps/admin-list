@@ -23,7 +23,6 @@ import {
   messages,
   filterDate,
   filterStatus,
-  table,
 } from '../utils/definedMessages'
 import { CURRENCY, ITEMS_PER_PAGE, LOCALE } from '../utils/constants'
 import { useInterface } from '../hooks/useInterface'
@@ -39,7 +38,7 @@ const ProviderLists: FC = (props) => {
   const [selectedDate, setSelectedDate] = useState<string | null>()
   const [selectedStatus, setSelectedStatus] = useState<string | null>()
   const [minimunDate, setMinimunDate] = useState(new Date())
-  const [searchListRawQuery, { data: dataSearchListsRaw, loading }] =
+  const [searchListRawQuery, { data: dataSearchListsRaw }] =
     useLazyQuery(searchListsRaw)
 
   const pagination = usePaginationState({
@@ -252,27 +251,6 @@ const ProviderLists: FC = (props) => {
     items: itemsLists,
     length: ITEMS_PER_PAGE,
   })
-
-  useEffect(() => {
-    if (loading) {
-      view.setStatus({
-        type: 'loading',
-      })
-    }
-
-    if (itemsLists?.length === 0 && !loading) {
-      view.setStatus({
-        type: 'empty',
-        message: formatMessage(table.empty),
-      })
-    }
-
-    if (itemsLists?.length !== 0 && !loading) {
-      view.setStatus({
-        type: 'ready',
-      })
-    }
-  }, [loading])
 
   useEffect(() => {
     const valuesSearchListsRaw: ValuesLists[] =
