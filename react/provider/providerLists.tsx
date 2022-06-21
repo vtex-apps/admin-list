@@ -38,7 +38,7 @@ const ProviderLists: FC = (props) => {
   const [selectedDate, setSelectedDate] = useState<string | null>()
   const [selectedStatus, setSelectedStatus] = useState<string | null>()
   const [minimunDate, setMinimunDate] = useState(new Date())
-  const [searchListRawQuery, { data: dataSearchListsRaw }] =
+  const [searchListRawQuery, { data: dataSearchListsRaw, loading }] =
     useLazyQuery(searchListsRaw)
 
   const pagination = usePaginationState({
@@ -243,6 +243,27 @@ const ProviderLists: FC = (props) => {
     items: itemsLists,
     length: ITEMS_PER_PAGE,
   })
+
+  useEffect(() => {
+    if (loading) {
+      view.setStatus({
+        type: 'loading',
+      })
+    }
+
+    if (itemsLists?.length === 0 && !loading) {
+      view.setStatus({
+        type: 'empty',
+        message: 'Vazio',
+      })
+    }
+
+    if (itemsLists?.length !== 0 && !loading) {
+      view.setStatus({
+        type: 'ready',
+      })
+    }
+  }, [loading])
 
   useEffect(() => {
     const valuesSearchListsRaw: ValuesLists[] =

@@ -53,7 +53,7 @@ const ProviderUser: FC = (props: Props) => {
     timeout: 500,
   })
 
-  const [searchListUserQuery, { data: dataSearchListsUser }] =
+  const [searchListUserQuery, { data: dataSearchListsUser, loading }] =
     useLazyQuery(searchListUser)
 
   const [searchGiftCardQuery, { data: dataSearchGiftCards }] =
@@ -62,6 +62,28 @@ const ProviderUser: FC = (props: Props) => {
   const [searchUsersQuery, { data: dataSearchUser }] = useLazyQuery(searchUser)
 
   const view = useDataViewState()
+
+  useEffect(() => {
+    if (loading) {
+      view.setStatus({
+        type: 'loading',
+      })
+    }
+
+    if (itemsListsUsers?.length === 0 && !loading) {
+      view.setStatus({
+        type: 'empty',
+        message: 'Vazio',
+      })
+    }
+
+    if (itemsListsUsers?.length !== 0 && !loading) {
+      view.setStatus({
+        type: 'ready',
+      })
+    }
+  }, [loading])
+
   const { formatMessage } = useIntl()
 
   const { setTableLists, setSearchEmailFilter, setInfoUserList } =
