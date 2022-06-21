@@ -59,7 +59,7 @@ const TableListArea: FC = () => {
               csx={{
                 display: 'flex',
                 alignItems: 'center',
-                marginTop: '5px',
+                marginTop: '-4px',
               }}
             >
               <Search id="search" {...getInputProps()} />
