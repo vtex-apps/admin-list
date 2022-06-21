@@ -64,6 +64,9 @@ export const table = defineMessages({
   paginationNext: {
     id: 'admin/interface.pagination.next',
   },
+  empty: {
+    id: 'admin/interface.empty',
+  },
 })
 
 export const totalizer = defineMessages({
@@ -138,5 +141,8 @@ export const modal = defineMessages({
   },
   ariaLabel: {
     id: 'admin/interface.modal.aria.label',
+  },
+  confirm: {
+    id: 'admin/interface.modal.confirm',
   },
 })

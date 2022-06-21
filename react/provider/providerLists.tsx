@@ -49,6 +49,7 @@ const ProviderLists: FC = (props) => {
     getInputProps,
     value: search,
     debouncedValue,
+    setValue,
   } = useSearchState({
     timeout: 500,
   })
@@ -62,7 +63,8 @@ const ProviderLists: FC = (props) => {
 
   const modalState = useModalState({ visible: false })
 
-  const { searchEmailFilter, infoUserList, setInfoUserList } = useInterface()
+  const { searchEmailFilter, infoUserList, setInfoUserList, tableLists } =
+    useInterface()
 
   const datePersonalizeInitial = useDatePickerState({
     minValue: {
@@ -122,6 +124,18 @@ const ProviderLists: FC = (props) => {
     onChange: ({ selected }) => setSelectedStatus(selected),
     label: formatMessage(filterStatus.status),
   })
+
+  useEffect(() => {
+    dateState.onClear()
+    statusState.onClear()
+    setValue('')
+  }, [tableLists])
+
+  useEffect(() => {
+    if (selectedDate === '9') {
+      modalState.setVisible(true)
+    }
+  }, [selectedDate])
 
   useEffect(() => {
     const filter = {

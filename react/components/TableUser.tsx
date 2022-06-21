@@ -5,11 +5,13 @@ import {
   DataView,
   DataViewControls,
   FlexSpacer,
+  IconWarningCircle,
   PageHeader,
   PageTitle,
   Pagination,
   Search,
   tag,
+  Tooltip,
 } from '@vtex/admin-ui'
 import { FormattedMessage, useIntl } from 'react-intl'
 
@@ -39,11 +41,19 @@ const TableUserArea: FC = () => {
       >
         <DataView state={view}>
           <DataViewControls>
-            <tag.div>
+            <tag.div
+              csx={{
+                display: 'flex',
+                alignItems: 'center',
+              }}
+            >
               <Search id="search" {...getInputProps()} />
-              <tag.p style={{ fontSize: '0.75rem', marginTop: '2px' }}>
-                {formatMessage(table.searchUser)}
-              </tag.p>
+              <Tooltip
+                label={formatMessage(table.searchUser)}
+                placement="right"
+              >
+                <IconWarningCircle size="small" style={{ marginLeft: '2px' }} />
+              </Tooltip>
             </tag.div>
             <FlexSpacer />
             <Pagination

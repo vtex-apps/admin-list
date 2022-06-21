@@ -4,8 +4,8 @@
   "admin/interface.columns.title": "Título",
   "admin/interface.columns.user": "Usuário",
   "admin/interface.columns.validate": "Data do Evento",
-  "admin/interface.columns.bought": "Comprado",
-  "admin/interface.columns.converted": "Convetido",
+  "admin/interface.columns.bought": "Créditos Totais",
+  "admin/interface.columns.converted": "Gerado em Gift Card",
   "admin/interface.columns.status": "Status",
   "admin/interface.columns.owner": "Proprietário",
   "admin/interface.columns.lists": "Listas",
@@ -18,9 +18,9 @@
   "admin/interface.pagination.previous": "Anterior",
   "admin/interface.pagination.next": "Próximo",
   "admin/interface.totalizer.lists.created": "Listas",
-  "admin/interface.totalizer.bought": "Comprado",
-  "admin/interface.totalizer.converted": "Convertido",
-  "admin/interface.totalizer.info": "O valor convertido independe dos filtros aplicados",
+  "admin/interface.totalizer.bought": "Créditos Totais",
+  "admin/interface.totalizer.converted": "Gerado em Gift Card",
+  "admin/interface.totalizer.info": "Esse campo não se altera com aplicação de filtro",
   "admin/interface.filter.date": "Data da criação da lista",
   "admin/interface.filter.date.today": "Hoje",
   "admin/interface.filter.date.yesterday": "Ontem",
@@ -38,6 +38,8 @@
   "admin/interface.modal.date.final": "Data final",
   "admin/interface.modal.title": "Personalizar busca por data",
   "admin/interface.modal.aria.label": "Modal de personalização da data",
+  "admin/interface.modal.confirm": "Confirmar",
   "admin/interface.columns.tooltip.user": "Ver todas as listas desse usuário",
-  "admin/interface.columns.tooltip.list": "Ver a página da lista"
+  "admin/interface.columns.tooltip.list": "Ver a página da lista",
+  "admin/interface.empty": "Tabela vazia"
 }

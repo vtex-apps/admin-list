@@ -14,6 +14,8 @@ import {
   useToolbarState,
   experimental_Filter,
   tag,
+  Tooltip,
+  IconWarningCircle,
 } from '@vtex/admin-ui'
 import { useIntl } from 'react-intl'
 
@@ -55,13 +57,18 @@ const TableListArea: FC = () => {
           <DataViewControls>
             <tag.div
               csx={{
-                marginTop: '5px',
+                display: 'flex',
+                alignItems: 'center',
+                marginTop: '-4px',
               }}
             >
               <Search id="search" {...getInputProps()} />
-              <p style={{ fontSize: '0.75rem', marginTop: '2px' }}>
-                {formatMessage(table.searchList)}
-              </p>
+              <Tooltip
+                label={formatMessage(table.searchList)}
+                placement="right"
+              >
+                <IconWarningCircle size="small" style={{ marginLeft: '2px' }} />
+              </Tooltip>
             </tag.div>
 
             <Toolbar

@@ -49,6 +49,7 @@ const ProviderUser: FC = (props: Props) => {
     getInputProps,
     value: search,
     debouncedValue,
+    setValue,
   } = useSearchState({
     timeout: 500,
   })
@@ -62,9 +63,10 @@ const ProviderUser: FC = (props: Props) => {
   const [searchUsersQuery, { data: dataSearchUser }] = useLazyQuery(searchUser)
 
   const view = useDataViewState()
+
   const { formatMessage } = useIntl()
 
-  const { setTableLists, setSearchEmailFilter, setInfoUserList } =
+  const { setTableLists, setSearchEmailFilter, setInfoUserList, tableLists } =
     useInterface()
 
   function openTableList(event: SyntheticEvent, email: any) {
@@ -257,6 +259,10 @@ const ProviderUser: FC = (props: Props) => {
       },
     })
   }, [debouncedValue, pagination.currentPage])
+
+  useEffect(() => {
+    setValue('')
+  }, [tableLists])
 
   return (
     <ContextUser.Provider
