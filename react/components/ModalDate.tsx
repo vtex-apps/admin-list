@@ -71,7 +71,7 @@ const ModalDateArea: FC = () => {
             salveDatePersonalizate()
           }}
         >
-          Confirm
+          {formatMessage(modal.confirm)}
         </Button>
       </ModalFooter>
     </Modal>

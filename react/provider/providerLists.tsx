@@ -23,6 +23,7 @@ import {
   messages,
   filterDate,
   filterStatus,
+  table,
 } from '../utils/definedMessages'
 import { CURRENCY, ITEMS_PER_PAGE, LOCALE } from '../utils/constants'
 import { useInterface } from '../hooks/useInterface'
@@ -262,7 +263,7 @@ const ProviderLists: FC = (props) => {
     if (itemsLists?.length === 0 && !loading) {
       view.setStatus({
         type: 'empty',
-        message: 'Vazio',
+        message: formatMessage(table.empty),
       })
     }
 

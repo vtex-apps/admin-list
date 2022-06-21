@@ -17,7 +17,7 @@ import searchGiftCards from '../queries/searchGiftCards.gql'
 import searchUser from '../queries/searchUser.gql'
 import searchListUser from '../queries/searchListUser.gql'
 import { ContextUser } from '../hooks/useUser'
-import { columns, messages } from '../utils/definedMessages'
+import { columns, messages, table } from '../utils/definedMessages'
 import { CURRENCY, ITEMS_PER_PAGE, LOCALE } from '../utils/constants'
 import { useInterface } from '../hooks/useInterface'
 
@@ -76,7 +76,7 @@ const ProviderUser: FC = (props: Props) => {
     if (itemsListsUsers?.length === 0 && !loading) {
       view.setStatus({
         type: 'empty',
-        message: 'Vazio',
+        message: formatMessage(table.empty),
       })
     }
 
