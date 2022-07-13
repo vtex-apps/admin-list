@@ -10,9 +10,9 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "typescript": "3.9.7",
-    "vtex.admin-interface": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.admin-interface@0.7.1/public/@types/vtex.admin-interface",
-    "vtex.gift-card-list": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.gift-card-list@1.3.2/public/@types/vtex.gift-card-list",
-    "vtex.list-graphql": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.list-graphql@3.0.0/public/@types/vtex.list-graphql",
+    "vtex.admin-interface": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.admin-interface@0.9.0/public/@types/vtex.admin-interface",
+    "vtex.gift-card-list": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.gift-card-list@1.14.0/public/@types/vtex.gift-card-list",
+    "vtex.list-graphql": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.list-graphql@3.3.0/public/@types/vtex.list-graphql",
     "vtex.render-runtime": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.render-runtime@8.132.4/public/@types/vtex.render-runtime"
   },
   "dependencies": {
