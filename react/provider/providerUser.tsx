@@ -32,6 +32,7 @@ const ProviderUser: FC = (props: Props) => {
   const [itemsListsUsers, setItemsListsUsers] = useState<ItemsListsUsers[]>()
   const [emailFilter, setEmailFilter] = useState<string[]>()
   const [totalPagination, setTotalPagination] = useState<number>(0)
+  const [loading, setLoading] = useState(false)
   const [emailFilterGiftCard, setEmailFilterGiftCard] = useState<string>()
   const pagination = usePaginationState({
     pageSize: ITEMS_PER_PAGE,
@@ -54,13 +55,20 @@ const ProviderUser: FC = (props: Props) => {
     timeout: 500,
   })
 
-  const [searchListUserQuery, { data: dataSearchListsUser }] =
-    useLazyQuery(searchListUser)
+  const [
+    searchListUserQuery,
+    { data: dataSearchListsUser, loading: loadingSearchListUser },
+  ] = useLazyQuery(searchListUser)
 
-  const [searchGiftCardQuery, { data: dataSearchGiftCards }] =
-    useLazyQuery(searchGiftCards)
+  const [
+    searchGiftCardQuery,
+    { data: dataSearchGiftCards, loading: loadingSearchGiftCard },
+  ] = useLazyQuery(searchGiftCards)
 
-  const [searchUsersQuery, { data: dataSearchUser }] = useLazyQuery(searchUser)
+  const [
+    searchUsersQuery,
+    { data: dataSearchUser, loading: loadingSearchUser },
+  ] = useLazyQuery(searchUser)
 
   const view = useDataViewState()
 
@@ -162,6 +170,32 @@ const ProviderUser: FC = (props: Props) => {
     items: itemsListsUsers,
     length: ITEMS_PER_PAGE,
   })
+
+  useEffect(() => {
+    if (loadingSearchGiftCard || loadingSearchUser || loadingSearchListUser) {
+      setLoading(true)
+    }
+
+    if (
+      !loadingSearchGiftCard &&
+      !loadingSearchUser &&
+      !loadingSearchListUser
+    ) {
+      setLoading(false)
+    }
+  }, [loadingSearchGiftCard, loadingSearchListUser, loadingSearchUser])
+
+  useEffect(() => {
+    if (loading && view.status !== 'loading') {
+      view.setStatus({
+        type: 'loading',
+      })
+    } else {
+      view.setStatus({
+        type: 'ready',
+      })
+    }
+  }, [loading])
 
   useEffect(() => {
     const valuesSearchListsUser: ValuesListsUsers[] =
