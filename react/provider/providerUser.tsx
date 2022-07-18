@@ -1,5 +1,5 @@
 import type { FC, SyntheticEvent } from 'react'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useMemo } from 'react'
 import { useLazyQuery } from 'react-apollo'
 import { useIntl } from 'react-intl'
 import {
@@ -54,13 +54,20 @@ const ProviderUser: FC = (props: Props) => {
     timeout: 500,
   })
 
-  const [searchListUserQuery, { data: dataSearchListsUser }] =
-    useLazyQuery(searchListUser)
+  const [
+    searchListUserQuery,
+    { data: dataSearchListsUser, loading: loadingSearchListUser },
+  ] = useLazyQuery(searchListUser)
 
-  const [searchGiftCardQuery, { data: dataSearchGiftCards }] =
-    useLazyQuery(searchGiftCards)
+  const [
+    searchGiftCardQuery,
+    { data: dataSearchGiftCards, loading: loadingSearchGiftCard },
+  ] = useLazyQuery(searchGiftCards)
 
-  const [searchUsersQuery, { data: dataSearchUser }] = useLazyQuery(searchUser)
+  const [
+    searchUsersQuery,
+    { data: dataSearchUser, loading: loadingSearchUser },
+  ] = useLazyQuery(searchUser)
 
   const view = useDataViewState()
 
@@ -162,6 +169,22 @@ const ProviderUser: FC = (props: Props) => {
     items: itemsListsUsers,
     length: ITEMS_PER_PAGE,
   })
+
+  const loading = useMemo(() => {
+    return loadingSearchGiftCard || loadingSearchUser || loadingSearchListUser
+  }, [loadingSearchGiftCard, loadingSearchListUser, loadingSearchUser])
+
+  useEffect(() => {
+    if (loading && view.status !== 'loading') {
+      view.setStatus({
+        type: 'loading',
+      })
+    } else {
+      view.setStatus({
+        type: 'ready',
+      })
+    }
+  }, [loading])
 
   useEffect(() => {
     const valuesSearchListsUser: ValuesListsUsers[] =

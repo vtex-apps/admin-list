@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Add option to show the table is loading when the information in not 100% ready
+
 ## [0.9.1] - 2022-07-13
 
 ## [0.9.0] - 2022-06-21
@@ -20,7 +24,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.5.0] - 2022-06-14
 
 ## [0.4.0] - 2022-06-13
-
 
 ## [0.3.0] - 2022-06-10
 
