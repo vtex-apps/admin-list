@@ -15,6 +15,7 @@ import {
   usePaginationState,
   useSearchState,
 } from '@vtex/admin-ui'
+import { useRuntime } from 'vtex.render-runtime'
 
 import searchListsRaw from '../queries/searchListsRaw.gql'
 import { ContextLists } from '../hooks/useLists'
@@ -24,11 +25,12 @@ import {
   filterDate,
   filterStatus,
 } from '../utils/definedMessages'
-import { CURRENCY, ITEMS_PER_PAGE, LOCALE } from '../utils/constants'
+import { ITEMS_PER_PAGE } from '../utils/constants'
 import { useInterface } from '../hooks/useInterface'
 import { dictionaryDate, dictionaryStatus, today } from '../utils/dictionary'
 
 const ProviderLists: FC = (props) => {
+  const { culture } = useRuntime()
   const useFilterState = experimental_useFilterState
   const useDatePickerState = experimental_useDatePickerState
   const { formatMessage } = useIntl()
@@ -215,8 +217,8 @@ const ProviderLists: FC = (props) => {
         header: formatMessage(columns.bought),
         resolver: {
           type: 'currency',
-          locale: LOCALE,
-          currency: CURRENCY,
+          locale: culture.locale,
+          currency: culture.currency,
         },
       },
       {
@@ -224,7 +226,7 @@ const ProviderLists: FC = (props) => {
         header: formatMessage(columns.validate),
         resolver: {
           type: 'date',
-          locale: LOCALE,
+          locale: culture.locale,
           options: {
             day: 'numeric',
             month: 'long',

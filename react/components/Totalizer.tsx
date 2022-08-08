@@ -9,15 +9,17 @@ import {
 } from '@vtex/admin-ui'
 import React from 'react'
 import { useIntl } from 'react-intl'
+import { useRuntime } from 'vtex.render-runtime'
 
 import { useInterface } from '../hooks/useInterface'
-import { CURRENCY } from '../utils/constants'
 import { totalizer } from '../utils/definedMessages'
 
 const TotalizerArea = () => {
   const intl = useIntl()
 
   const { infoUserList } = useInterface()
+
+  const { culture } = useRuntime()
 
   return (
     <Card>
@@ -45,7 +47,7 @@ const TotalizerArea = () => {
                 {infoUserList?.purchase
                   ? intl.formatNumber(infoUserList?.purchase / 100, {
                       style: 'currency',
-                      currency: CURRENCY,
+                      currency: culture.currency,
                     })
                   : 0}
               </b>
@@ -69,7 +71,7 @@ const TotalizerArea = () => {
                 {infoUserList?.quantityAlreadyInGiftCard
                   ? intl.formatNumber(infoUserList?.quantityAlreadyInGiftCard, {
                       style: 'currency',
-                      currency: CURRENCY,
+                      currency: culture.currency,
                     })
                   : 0}
               </b>

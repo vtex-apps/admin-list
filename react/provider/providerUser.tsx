@@ -12,13 +12,14 @@ import {
   Button,
   usePaginationState,
 } from '@vtex/admin-ui'
+import { useRuntime } from 'vtex.render-runtime'
 
 import searchGiftCards from '../queries/searchGiftCards.gql'
 import searchUser from '../queries/searchUser.gql'
 import searchListUser from '../queries/searchListUser.gql'
 import { ContextUser } from '../hooks/useUser'
 import { columns, messages } from '../utils/definedMessages'
-import { CURRENCY, ITEMS_PER_PAGE, LOCALE } from '../utils/constants'
+import { ITEMS_PER_PAGE } from '../utils/constants'
 import { useInterface } from '../hooks/useInterface'
 
 interface Props {
@@ -26,6 +27,7 @@ interface Props {
 }
 
 const ProviderUser: FC = (props: Props) => {
+  const { culture } = useRuntime()
   const [valuesGiftCard, setValuesGiftCard] = useState<ValuesGiftCard[]>()
   const [valuesUser, setValuesUser] = useState<ValuesUser[]>()
   const [valuesListsUser, setValuesListsUser] = useState<ValuesListsUsers[]>()
@@ -139,8 +141,8 @@ const ProviderUser: FC = (props: Props) => {
         header: formatMessage(columns.bought),
         resolver: {
           type: 'currency',
-          locale: LOCALE,
-          currency: CURRENCY,
+          locale: culture.locale,
+          currency: culture.currency,
         },
       },
       {
@@ -148,8 +150,8 @@ const ProviderUser: FC = (props: Props) => {
         header: formatMessage(columns.converted),
         resolver: {
           type: 'currency',
-          locale: LOCALE,
-          currency: CURRENCY,
+          locale: culture.locale,
+          currency: culture.currency,
         },
       },
       {

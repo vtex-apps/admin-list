@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Remove the definition of which currency was updated. Before it was defined as real and now it is taken by the context
+
 ## [0.10.0] - 2022-07-18
 
 ### Added
