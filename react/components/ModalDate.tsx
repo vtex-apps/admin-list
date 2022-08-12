@@ -12,9 +12,9 @@ import {
 import type { FC } from 'react'
 import React from 'react'
 import { useIntl } from 'react-intl'
+import { useRuntime } from 'vtex.render-runtime'
 
 import { useLists } from '../hooks/useLists'
-import { LOCALE } from '../utils/constants'
 import { modal } from '../utils/definedMessages'
 
 const ModalDateArea: FC = () => {
@@ -31,6 +31,8 @@ const ModalDateArea: FC = () => {
   const DatePickerCalendar = experimental_DatePickerCalendar
   const I18nProvider = experimental_I18nProvider
 
+  const { culture } = useRuntime()
+
   return (
     <Modal
       aria-label={formatMessage(modal.ariaLabel)}
@@ -39,7 +41,7 @@ const ModalDateArea: FC = () => {
     >
       <ModalHeader title={formatMessage(modal.title)} />
       <ModalContent>
-        <I18nProvider locale={LOCALE}>
+        <I18nProvider locale={culture.locale}>
           <tag.div
             csx={{
               paddingBottom: '15px',
