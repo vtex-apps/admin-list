@@ -1,7 +1,7 @@
 {
   "name": "admin-interface",
   "vendor": "vtex",
-  "version": "0.11.0",
+  "version": "0.12.0",
   "title": "Interface for the admin panel",
   "description": "",
   "mustUpdateAt": "2022-08-28",
