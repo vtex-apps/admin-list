@@ -1,5 +1,5 @@
 {
-  "admin/interface.name": "Интерфейс за собственика на магазина",
+  "admin/interface.name": "Управление на приложение за списъци с подаръци",
   "admin/interface.title.user": "Всички собственици",
   "admin/interface.columns.title": "Заглавие",
   "admin/interface.columns.user": "Потребител",

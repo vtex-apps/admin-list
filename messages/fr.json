@@ -1,5 +1,5 @@
 {
-  "admin/interface.name": "Interface du propriétaire du magasin",
+  "admin/interface.name": "Gestion de l'appli pour la liste des cadeaux",
   "admin/interface.title.user": "Tous les propriétaires",
   "admin/interface.columns.title": "Titre",
   "admin/interface.columns.user": "Utilisateur",
