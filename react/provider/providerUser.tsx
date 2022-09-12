@@ -203,9 +203,7 @@ const ProviderUser: FC = (props: Props) => {
   }, [dataSearchGiftCards])
 
   useEffect(() => {
-    const valuesSearcUser: ValuesUser[] = dataSearchUser?.allUsers?.data
-
-    setValuesUser(valuesSearcUser)
+    setValuesUser(dataSearchUser?.allUsers?.data ?? undefined)
 
     if (
       dataSearchUser?.allUsers?.pagination?.total !== undefined &&
@@ -276,6 +274,7 @@ const ProviderUser: FC = (props: Props) => {
   useEffect(() => {
     const filter = debouncedValue ? { email: debouncedValue } : null
 
+    setItemsListsUsers(undefined)
     searchUsersQuery({
       variables: {
         filter,
