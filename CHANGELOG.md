@@ -9,7 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Korean translation.
+
+- Bulgarian, Dutch, English, French, Italian, Portuguese, Romanian, Spanish and Thai translations.
+
+### Fixed
+
 - Add github folder
+
 
 ## [0.14.0] - 2022-09-15
 
