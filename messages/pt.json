@@ -1,5 +1,6 @@
 {
-  "admin/interface.name": "Gerenciamento da app de lista de presentes",
+  "admin/section.name": "Lista de presentes",
+  "admin/subsection.name": "Gerenciamento de listas",
   "admin/interface.title.user": "Todos os proprietários",
   "admin/interface.columns.title": "Título",
   "admin/interface.columns.user": "Usuário",
@@ -37,7 +38,7 @@
   "admin/interface.modal.date.initial": "Data inicial",
   "admin/interface.modal.date.final": "Data final",
   "admin/interface.modal.title": "Personalizar busca por data",
-  "admin/interface.modal.aria.label": "Modal de personalização da data",
+  "admin/interface.modal.aria.label": "Modal de personalizaçao da data",
   "admin/interface.modal.confirm": "Confirmar",
   "admin/interface.columns.tooltip.user": "Ver todas as listas desse usuário",
   "admin/interface.columns.tooltip.list": "Ver página da lista",
