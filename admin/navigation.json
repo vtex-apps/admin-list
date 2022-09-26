@@ -1,6 +1,12 @@
 {
   "section": "other",
-  "titleId": "admin/interface.name",
+  "subSection": "giftListSection",
+  "titleId": "admin/section.name",
   "icon": "extensions-ic",
-  "path": "/admin/interface"
+  "subSectionItems": [
+    {
+      "labelId": "admin/subsection.name",
+      "path": "/admin/interface"
+    }
+  ]
 }
