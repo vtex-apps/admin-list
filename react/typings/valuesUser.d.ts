@@ -1,3 +1,3 @@
-interface ValuesUser{
-    email: string
+interface ValuesUser {
+  email: string
 }
