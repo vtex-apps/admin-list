@@ -1,4 +1,6 @@
 {
+  "admin/section.name": "Gift List",
+  "admin/subsection.name": "List management",
   "admin/interface.name": "Gift List App Management",
   "admin/interface.title.user": "All owners",
   "admin/interface.columns.title": "Title",
