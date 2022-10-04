@@ -1,6 +1,7 @@
 {
   "admin/section.name": "Lista de presentes",
   "admin/subsection.name": "Gerenciamento de listas",
+  "admin/interface.name": "Gerenciamento do app Lista de presentes",
   "admin/interface.title.user": "Todos os proprietários",
   "admin/interface.columns.title": "Título",
   "admin/interface.columns.user": "Usuário",

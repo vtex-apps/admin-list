@@ -1,4 +1,6 @@
 {
+  "admin/section.name": "Listă de cadouri",
+  "admin/subsection.name": "Gestionare liste",
   "admin/interface.name": "Gestionare Gift List App (aplicație listă de cadouri)",
   "admin/interface.title.user": "Toți proprietarii",
   "admin/interface.columns.title": "Titlu",

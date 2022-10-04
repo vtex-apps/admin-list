@@ -1,4 +1,6 @@
 {
+  "admin/section.name": "Liste de cadeau",
+  "admin/subsection.name": "Gestion des listes",
   "admin/interface.name": "Gestion de l'appli pour la liste des cadeaux",
   "admin/interface.title.user": "Tous les propriétaires",
   "admin/interface.columns.title": "Titre",
