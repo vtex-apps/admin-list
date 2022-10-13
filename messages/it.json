@@ -1,5 +1,7 @@
 {
-  "admin/interface.name": "Gestione app \"Liste regali\"",
+  "admin/section.name": "Liste regali",
+  "admin/subsection.name": "Gestione delle liste",
+  "admin/interface.name": "Gestione dell'app \"Liste regali\"",
   "admin/interface.title.user": "Tutti i proprietari",
   "admin/interface.columns.title": "Titolo",
   "admin/interface.columns.user": "Utente",

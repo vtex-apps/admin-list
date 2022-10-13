@@ -1,4 +1,6 @@
 {
+  "admin/section.name": "선물 목록",
+  "admin/subsection.name": "목록 관리",
   "admin/interface.name": "선물 목록 앱 관리",
   "admin/interface.title.user": "모든 소유자",
   "admin/interface.columns.title": "제목",

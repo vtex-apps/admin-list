@@ -1,4 +1,6 @@
 {
+  "admin/section.name": "Cadeaulijst",
+  "admin/subsection.name": "Lijstbeheer",
   "admin/interface.name": "Cadeaulijst app-beheer",
   "admin/interface.title.user": "Alle eigenaren",
   "admin/interface.columns.title": "Titel",

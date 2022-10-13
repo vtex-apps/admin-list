@@ -1,4 +1,6 @@
 {
+  "admin/section.name": "Списък с подаръци",
+  "admin/subsection.name": "Управление на списък",
   "admin/interface.name": "Управление на приложение за списъци с подаръци",
   "admin/interface.title.user": "Всички собственици",
   "admin/interface.columns.title": "Заглавие",
