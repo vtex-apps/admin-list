@@ -12,9 +12,11 @@ export const dictionaryStatus: { [key: string]: DictionaryType } = {
 }
 
 const todayUTC = today.valueOf()
-const oneDayAgo = 86400000
+const oneDay = 86400000
 
-export const yesterday = new Date(todayUTC - oneDayAgo)
+export const yesterday = new Date(todayUTC - oneDay)
+
+export const tomorrow = new Date(todayUTC + oneDay)
 
 function getMonday(d: Date) {
   d = new Date(d)
@@ -40,7 +42,7 @@ export const dictionaryDate: { [key: string]: DictionaryType } = {
     endDate: new Date().toISOString(),
   },
   '4': {
-    startDate: new Date(thisWeek.valueOf() - oneDayAgo * 7).toISOString(),
+    startDate: new Date(thisWeek.valueOf() - oneDay * 7).toISOString(),
     endDate: thisWeek.toISOString(),
   },
   '5': {

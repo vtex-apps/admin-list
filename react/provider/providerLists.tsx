@@ -27,7 +27,12 @@ import {
 } from '../utils/definedMessages'
 import { ITEMS_PER_PAGE } from '../utils/constants'
 import { useInterface } from '../hooks/useInterface'
-import { dictionaryDate, dictionaryStatus, today } from '../utils/dictionary'
+import {
+  dictionaryDate,
+  dictionaryStatus,
+  today,
+  tomorrow,
+} from '../utils/dictionary'
 
 const ProviderLists: FC = (props) => {
   const { culture } = useRuntime()
@@ -75,9 +80,9 @@ const ProviderLists: FC = (props) => {
       day: 1,
     },
     maxValue: {
-      year: today.getFullYear(),
-      month: today.getMonth(),
-      day: today.getDate() + 1,
+      year: tomorrow.getFullYear(),
+      month: tomorrow.getMonth(),
+      day: tomorrow.getDate(),
     },
   })
 
@@ -88,9 +93,9 @@ const ProviderLists: FC = (props) => {
       day: minimunDate.getDate(),
     },
     maxValue: {
-      year: today.getFullYear(),
-      month: today.getMonth(),
-      day: today.getDate() + 1,
+      year: tomorrow.getFullYear(),
+      month: tomorrow.getMonth(),
+      day: tomorrow.getDate(),
     },
   })
 
