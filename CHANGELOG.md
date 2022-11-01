@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.17.0] - 2022-11-01
+
 ### Fixed
 
 - Fixing the problem of tomorrow date when it's the last day of the month.
