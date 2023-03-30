@@ -46,7 +46,9 @@ const ProviderLists: FC = (props) => {
   const [selectedStatus, setSelectedStatus] = useState<string | null>()
   const [minimunDate, setMinimunDate] = useState(new Date())
   const [searchListRawQuery, { data: dataSearchListsRaw, loading }] =
-    useLazyQuery(searchListsRaw)
+    useLazyQuery(searchListsRaw, {
+      fetchPolicy: 'cache-and-network',
+    })
 
   const pagination = usePaginationState({
     pageSize: ITEMS_PER_PAGE,

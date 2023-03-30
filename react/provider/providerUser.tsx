@@ -59,17 +59,23 @@ const ProviderUser: FC = (props: Props) => {
   const [
     searchListUserQuery,
     { data: dataSearchListsUser, loading: loadingSearchListUser },
-  ] = useLazyQuery(searchListUser)
+  ] = useLazyQuery(searchListUser, {
+    fetchPolicy: 'cache-and-network',
+  })
 
   const [
     searchGiftCardQuery,
     { data: dataSearchGiftCards, loading: loadingSearchGiftCard },
-  ] = useLazyQuery(searchGiftCards)
+  ] = useLazyQuery(searchGiftCards, {
+    fetchPolicy: 'cache-and-network',
+  })
 
   const [
     searchUsersQuery,
     { data: dataSearchUser, loading: loadingSearchUser },
-  ] = useLazyQuery(searchUser)
+  ] = useLazyQuery(searchUser, {
+    fetchPolicy: 'cache-and-network',
+  })
 
   const view = useDataViewState()
 
